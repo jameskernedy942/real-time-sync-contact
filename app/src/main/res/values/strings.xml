@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Real Time Sync</string>
+
+    <!-- Device Admin -->
+    <string name="device_admin_label">Real Time Sync Admin</string>
+    <string name="device_admin_description">Prevents the app from being force-stopped to ensure 24/7 contact synchronization</string>
+
+    <!-- Accessibility Service -->
+    <string name="accessibility_service_description">Keeps Real Time Sync running in the background to ensure uninterrupted contact synchronization</string>
+
+    <!-- Permissions -->
+    <string name="permission_required">Permission Required</string>
+    <string name="permission_denied">Some permissions were denied. The app cannot function without all permissions.</string>
+
+    <!-- Status Messages -->
+    <string name="service_running">Service is running</string>
+    <string name="service_stopped">Service is stopped</string>
+    <string name="connecting">Connecting...</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="reconnecting">Reconnecting...</string>
+
+    <!-- Error Messages -->
+    <string name="error_invalid_phone">Invalid phone number. Must start with 628 and be at least 10 digits</string>
+    <string name="error_same_numbers">Phone numbers must be different</string>
+    <string name="error_connection_failed">Failed to connect to CloudAMQP</string>
+    <string name="error_contact_permission">Contact permission is required</string>
+</resources>

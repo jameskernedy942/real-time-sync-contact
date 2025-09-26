@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "27799786433",
+    "project_id": "real-time-sync-contact",
+    "storage_bucket": "real-time-sync-contact.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27799786433:android:1c5f415ab8bdb6b5495540",
+        "android_client_info": {
+          "package_name": "com.realtime.synccontact"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmpJkQvvrzAM408h-laejATl4DMGlMu8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

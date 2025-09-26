@@ -309,18 +309,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestDeviceAdminPermission() {
-        requestAccessibilityService()
-        //no need to use device admin
-//        if (!devicePolicyManager.isAdminActive(componentName)) {
-//            updateStatus("Requesting Device Admin permission...")
-//                val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN)
-//            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, componentName)
-//            intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-//                "Device Admin permission is required to prevent the app from being force-stopped, ensuring 24/7 operation.")
-//            startActivityForResult(intent, REQUEST_CODE_DEVICE_ADMIN)
-//        } else {
-//            requestAccessibilityService()
-//        }
+//        requestAccessibilityService()
+//        //no need to use device admin
+        if (!devicePolicyManager.isAdminActive(componentName)) {
+            updateStatus("Requesting Device Admin permission...")
+                val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN)
+            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, componentName)
+            intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
+                "Device Admin permission is required to prevent the app from being force-stopped, ensuring 24/7 operation.")
+            startActivityForResult(intent, REQUEST_CODE_DEVICE_ADMIN)
+        } else {
+            requestAccessibilityService()
+        }
     }
 
     private fun requestAccessibilityService() {

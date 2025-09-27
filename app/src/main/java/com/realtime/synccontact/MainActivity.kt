@@ -325,18 +325,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun requestAccessibilityService() {
         if (!isAccessibilityServiceEnabled()) {
-            updateStatus("Accessibility Service (Optional)")
+            updateStatus("Accessibility Service")
             AlertDialog.Builder(this)
-                .setTitle("Enable Accessibility Service (Optional)")
-                .setMessage("Enabling Real Time Sync accessibility service provides extra protection against the app being killed.\n\nThis is optional but recommended for better reliability.")
+                .setTitle("Enable Accessibility Service")
+                .setMessage("Enabling Real Time Sync accessibility service provides extra protection against the app being killed.")
                 .setPositiveButton("Enable") { _, _ ->
                     val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
                     startActivityForResult(intent, REQUEST_CODE_ACCESSIBILITY)
-                }
-                .setNegativeButton("Skip") { _, _ ->
-                    // User chose to skip - that's OK
-                    updateStatus("Skipped accessibility service")
-                    allPermissionsGranted()
                 }
                 .setCancelable(false)
                 .show()

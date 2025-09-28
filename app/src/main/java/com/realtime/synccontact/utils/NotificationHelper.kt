@@ -56,14 +56,14 @@ class NotificationHelper(private val context: Context) {
             ).apply {
                 description = "Critical error notifications requiring user attention"
                 setShowBadge(true)
-                enableVibration(true)
-
-                val soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-                val audioAttributes = AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build()
-                setSound(soundUri, audioAttributes)
+//                enableVibration(true)
+//
+//                val soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+//                val audioAttributes = AudioAttributes.Builder()
+//                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+//                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+//                    .build()
+//                setSound(soundUri, audioAttributes)
             }
 
             // Status channel (silent, informational)
@@ -86,16 +86,16 @@ class NotificationHelper(private val context: Context) {
             ).apply {
                 description = "Critical service alerts requiring immediate attention"
                 setShowBadge(true)
-                enableVibration(true)
+//                enableVibration(true)
                 enableLights(true)
                 lightColor = Color.RED
 
-                val soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
-                val audioAttributes = AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_ALARM)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build()
-                setSound(soundUri, audioAttributes)
+//                val soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
+//                val audioAttributes = AudioAttributes.Builder()
+//                    .setUsage(AudioAttributes.USAGE_ALARM)
+//                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+//                    .build()
+//                setSound(soundUri, audioAttributes)
             }
 
             // Warning channel
@@ -106,7 +106,7 @@ class NotificationHelper(private val context: Context) {
             ).apply {
                 description = "Service warning notifications"
                 setShowBadge(true)
-                enableVibration(true)
+//                enableVibration(true)
                 enableLights(true)
                 lightColor = Color.YELLOW
             }

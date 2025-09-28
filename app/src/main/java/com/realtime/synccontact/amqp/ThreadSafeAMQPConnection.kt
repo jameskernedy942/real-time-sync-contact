@@ -409,6 +409,10 @@ class ThreadSafeAMQPConnection(
 
     fun isConnected(): Boolean = isConnected.get() && channel?.isOpen == true
 
+    fun getQueueName(): String = queueName
+
+    fun getPhoneNumber(): String = phoneNumber
+
     fun disconnect() {
         try {
             isConnected.set(false)

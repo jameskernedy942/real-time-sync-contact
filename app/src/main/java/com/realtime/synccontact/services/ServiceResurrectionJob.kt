@@ -183,14 +183,15 @@ class ServiceResurrectionJob : JobService() {
                 // Stop and restart
                 stopService(Intent(this, MainSyncService::class.java))
 
-                Thread.sleep(1000) // Wait 1 second
-
-                val intent = Intent(this, MainSyncService::class.java)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    startForegroundService(intent)
-                } else {
-                    startService(intent)
-                }
+                // Use Handler instead of Thread.sleep to avoid blocking
+                android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+                    val intent = Intent(this, MainSyncService::class.java)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        startForegroundService(intent)
+                    } else {
+                        startService(intent)
+                    }
+                }, 1000)
             } else {
                 CrashlyticsLogger.log(
                     CrashlyticsLogger.LogLevel.DEBUG,

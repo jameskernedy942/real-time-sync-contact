@@ -308,6 +308,52 @@ class MainSyncService : Service(), ComponentCallbacks2 {
     private fun startSyncOperations() {
         val (phone1, phone2) = sharedPrefsManager.getPhoneNumbers()
 
+        // CRITICAL: Check if connections already exist WITH SAME PHONE NUMBERS
+        val conn1Valid = connection1?.let {
+            it.isConnected() && it.getPhoneNumber() == phone1
+        } ?: false
+
+        val conn2Valid = connection2?.let {
+            it.isConnected() && it.getPhoneNumber() == phone2
+        } ?: false
+
+        // If phone numbers haven't changed and connections are active, skip
+        if (conn1Valid && (phone2.isEmpty() || conn2Valid)) {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.INFO,
+                "MainSyncService",
+                "Connections already active with same phone numbers, skipping duplicate creation"
+            )
+            return
+        }
+
+        // If phone numbers changed, we need to cleanup old connections
+        if (connection1 != null && connection1?.getPhoneNumber() != phone1) {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.INFO,
+                "MainSyncService",
+                "Phone1 changed from ${connection1?.getPhoneNumber()} to $phone1, cleaning up old connection"
+            )
+            connection1?.disconnect()
+            connection1?.cleanup()
+            connection1 = null
+            processor1?.cleanup()
+            processor1 = null
+        }
+
+        if (connection2 != null && connection2?.getPhoneNumber() != phone2) {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.INFO,
+                "MainSyncService",
+                "Phone2 changed from ${connection2?.getPhoneNumber()} to $phone2, cleaning up old connection"
+            )
+            connection2?.disconnect()
+            connection2?.cleanup()
+            connection2 = null
+            processor2?.cleanup()
+            processor2 = null
+        }
+
         if (phone1.isEmpty()) {
             CrashlyticsLogger.log(
                 CrashlyticsLogger.LogLevel.WARNING,
@@ -357,6 +403,25 @@ class MainSyncService : Service(), ComponentCallbacks2 {
     private suspend fun startConnection1(phone: String) {
         val queueName = "APK_SYNC_$phone"
 
+        // CRITICAL: Don't create duplicate connection WITH SAME PHONE NUMBER
+        if (connection1?.isConnected() == true && connection1?.getPhoneNumber() == phone) {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.INFO,
+                "Connection1",
+                "Already connected to queue $queueName, skipping duplicate creation"
+            )
+            return
+        }
+
+        // If phone number changed, log it
+        if (connection1 != null && connection1?.getPhoneNumber() != phone) {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.INFO,
+                "Connection1",
+                "Phone number changed from ${connection1?.getPhoneNumber()} to $phone, creating new connection"
+            )
+        }
+
         // Check CloudAMQP limits before connecting
         if (!cloudAMQPMonitor.shouldAllowConnection()) {
             val delay = cloudAMQPMonitor.getRetryDelay()
@@ -372,6 +437,23 @@ class MainSyncService : Service(), ComponentCallbacks2 {
 
         // Record connection attempt
         cloudAMQPMonitor.recordConnection()
+
+        // ALWAYS cleanup any existing connection first to prevent duplicates
+        connection1?.let {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.INFO,
+                "Connection1",
+                "Cleaning up existing connection before creating new one"
+            )
+            it.disconnect()
+            it.cleanup()
+        }
+        connection1 = null
+        processor1?.cleanup()
+        processor1 = null
+
+        // Small delay to ensure cleanup
+        delay(100)
 
         // Create thread-safe connection to prevent deadlocks
         connection1 = ThreadSafeAMQPConnection(CONNECTION_URL, queueName, phone, connectionManager)
@@ -446,6 +528,25 @@ class MainSyncService : Service(), ComponentCallbacks2 {
     private suspend fun startConnection2(phone: String) {
         val queueName = "APK_SYNC_$phone"
 
+        // CRITICAL: Don't create duplicate connection WITH SAME PHONE NUMBER
+        if (connection2?.isConnected() == true && connection2?.getPhoneNumber() == phone) {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.INFO,
+                "Connection2",
+                "Already connected to queue $queueName, skipping duplicate creation"
+            )
+            return
+        }
+
+        // If phone number changed, log it
+        if (connection2 != null && connection2?.getPhoneNumber() != phone) {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.INFO,
+                "Connection2",
+                "Phone number changed from ${connection2?.getPhoneNumber()} to $phone, creating new connection"
+            )
+        }
+
         // Check CloudAMQP limits before connecting
         if (!cloudAMQPMonitor.shouldAllowConnection()) {
             val delay = cloudAMQPMonitor.getRetryDelay()
@@ -461,6 +562,23 @@ class MainSyncService : Service(), ComponentCallbacks2 {
 
         // Record connection attempt
         cloudAMQPMonitor.recordConnection()
+
+        // ALWAYS cleanup any existing connection first to prevent duplicates
+        connection2?.let {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.INFO,
+                "Connection2",
+                "Cleaning up existing connection before creating new one"
+            )
+            it.disconnect()
+            it.cleanup()
+        }
+        connection2 = null
+        processor2?.cleanup()
+        processor2 = null
+
+        // Small delay to ensure cleanup
+        delay(100)
 
         // Create thread-safe connection to prevent deadlocks
         connection2 = ThreadSafeAMQPConnection(CONNECTION_URL, queueName, phone, connectionManager)
@@ -999,16 +1117,78 @@ class MainSyncService : Service(), ComponentCallbacks2 {
                 // Check if we should reconnect
                 if (!isRunning.get()) return@withContext
 
+                val (phone1, phone2) = sharedPrefsManager.getPhoneNumbers()
+
                 CrashlyticsLogger.log(
                     CrashlyticsLogger.LogLevel.INFO,
                     "Network",
-                    "Attempting to reconnect all connections"
+                    "Checking connections for phones: $phone1, $phone2"
                 )
 
-                // Check connection states and restart if needed
-                if (connection1?.isConnected() != true || connection2?.isConnected() != true) {
-                    // Restart sync operations to properly reconnect with message handlers
+                // Check if connection1 needs reconnection
+                val conn1NeedsReconnect = connection1?.let {
+                    !it.isConnected() || it.getPhoneNumber() != phone1
+                } ?: true
+
+                // Check if connection2 needs reconnection
+                val conn2NeedsReconnect = if (phone2.isNotEmpty()) {
+                    connection2?.let {
+                        !it.isConnected() || it.getPhoneNumber() != phone2
+                    } ?: true
+                } else {
+                    false // No second phone, no need to reconnect
+                }
+
+                // Only reconnect if needed
+                if (conn1NeedsReconnect || conn2NeedsReconnect) {
+                    CrashlyticsLogger.log(
+                        CrashlyticsLogger.LogLevel.INFO,
+                        "Network",
+                        "Reconnection needed - Conn1: $conn1NeedsReconnect, Conn2: $conn2NeedsReconnect"
+                    )
+
+                    // Clean up connections that need reconnection
+                    if (conn1NeedsReconnect) {
+                        connection1?.let {
+                            CrashlyticsLogger.log(
+                                CrashlyticsLogger.LogLevel.INFO,
+                                "Network",
+                                "Cleaning up connection1 (was: ${it.getPhoneNumber()})"
+                            )
+                            it.disconnect()
+                            it.cleanup()
+                        }
+                        connection1 = null
+                        processor1?.cleanup()
+                        processor1 = null
+                    }
+
+                    if (conn2NeedsReconnect) {
+                        connection2?.let {
+                            CrashlyticsLogger.log(
+                                CrashlyticsLogger.LogLevel.INFO,
+                                "Network",
+                                "Cleaning up connection2 (was: ${it.getPhoneNumber()})"
+                            )
+                            it.disconnect()
+                            it.cleanup()
+                        }
+                        connection2 = null
+                        processor2?.cleanup()
+                        processor2 = null
+                    }
+
+                    // Small delay to ensure cleanup
+                    delay(500)
+
+                    // Now restart sync operations
                     startSyncOperations()
+                } else {
+                    CrashlyticsLogger.log(
+                        CrashlyticsLogger.LogLevel.INFO,
+                        "Network",
+                        "All connections are healthy with correct phone numbers, no reconnection needed"
+                    )
                 }
 
                 updateNotification("Reconnected to network")

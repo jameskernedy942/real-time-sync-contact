@@ -42,7 +42,7 @@ class MessageProcessor(
         val appVersion: String
     )
 
-    suspend fun processMessage(messageBody: String, connection: ResilientAMQPConnection): Boolean {
+    suspend fun processMessage(messageBody: String, connection: ImprovedAMQPConnection): Boolean {
         val startTime = System.currentTimeMillis()
 
         return try {
@@ -148,7 +148,7 @@ class MessageProcessor(
         }
     }
 
-    private fun publishSyncSuccess(syncId: Long, connection: ResilientAMQPConnection) {
+    private fun publishSyncSuccess(syncId: Long, connection: ImprovedAMQPConnection) {
         processingScope.launch {
             try {
                 val successMessage = SyncSuccessMessage(
@@ -202,7 +202,7 @@ class MessageProcessor(
         }
     }
 
-    private suspend fun processRetryQueue(connection: ResilientAMQPConnection) {
+    private suspend fun processRetryQueue(connection: ImprovedAMQPConnection) {
         if (!connection.isConnected()) {
             return
         }

@@ -12,12 +12,14 @@ import com.realtime.synccontact.BuildConfig
 import com.realtime.synccontact.MainActivity
 import com.realtime.synccontact.R
 import com.realtime.synccontact.amqp.MessageProcessor
-import com.realtime.synccontact.amqp.ResilientAMQPConnection
+import com.realtime.synccontact.amqp.ImprovedAMQPConnection
 import com.realtime.synccontact.data.LocalRetryQueue
+import com.realtime.synccontact.network.ConnectionManager
 import com.realtime.synccontact.utils.CrashlyticsLogger
 import com.realtime.synccontact.utils.NotificationHelper
 import com.realtime.synccontact.utils.SharedPrefsManager
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
 import java.util.concurrent.atomic.AtomicBoolean
 
 class MainSyncService : Service() {
@@ -27,9 +29,10 @@ class MainSyncService : Service() {
     private lateinit var notificationHelper: NotificationHelper
     private lateinit var wakeLock: PowerManager.WakeLock
     private lateinit var connectivityManager: ConnectivityManager
+    private lateinit var connectionManager: ConnectionManager
 
-    private var connection1: ResilientAMQPConnection? = null
-    private var connection2: ResilientAMQPConnection? = null
+    private var connection1: ImprovedAMQPConnection? = null
+    private var connection2: ImprovedAMQPConnection? = null
     private var processor1: MessageProcessor? = null
     private var processor2: MessageProcessor? = null
 
@@ -59,6 +62,7 @@ class MainSyncService : Service() {
         sharedPrefsManager = SharedPrefsManager(this)
         notificationHelper = NotificationHelper(this)
         connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        connectionManager = ConnectionManager(this)
 
         // Acquire wake lock
         val powerManager = getSystemService(POWER_SERVICE) as PowerManager
@@ -179,70 +183,134 @@ class MainSyncService : Service() {
     private suspend fun startConnection1(phone: String) {
         val queueName = "APK_SYNC_$phone"
 
+        // Create connection with improved error handling
+        connection1 = ImprovedAMQPConnection(CONNECTION_URL, queueName, phone, connectionManager)
+        processor1 = MessageProcessor(this@MainSyncService, queueName, phone)
+
+        // Monitor connection state
+        serviceScope.launch {
+            connection1?.connectionState?.collect { state ->
+                when (state) {
+                    ImprovedAMQPConnection.ConnectionState.CONNECTED -> {
+                        updateNotification("Queue 1 connected")
+                        CrashlyticsLogger.logConnectionEvent("CONNECTED", queueName, "Connection 1 established")
+                    }
+                    ImprovedAMQPConnection.ConnectionState.ERROR -> {
+                        val stats = connection1?.getConnectionStats()
+                        val failures = stats?.get("consecutiveFailures") ?: 0
+                        if (failures as Int > 50) {
+                            notifyError("Queue 1 persistent error")
+                        }
+                    }
+                    ImprovedAMQPConnection.ConnectionState.RECONNECTING -> {
+                        updateNotification("Queue 1 reconnecting...")
+                    }
+                    ImprovedAMQPConnection.ConnectionState.DISCONNECTED -> {
+                        updateNotification("Queue 1 disconnected")
+                    }
+                    else -> {}
+                }
+            }
+        }
+
+        // Connect with automatic retry
         while (isRunning.get()) {
             try {
-                connection1 = ResilientAMQPConnection(CONNECTION_URL, queueName, phone)
-                processor1 = MessageProcessor(this@MainSyncService, queueName, phone)
-
                 val connected = connection1?.connect { message ->
                     processor1?.processMessage(message, connection1!!) ?: false
                 } ?: false
 
                 if (connected) {
-                    updateNotification("Queue 1 connected")
-                    CrashlyticsLogger.logConnectionEvent("CONNECTED", queueName, "Connection 1 established")
-
-                    // Wait while connected
+                    // Connection will maintain itself
+                    // Just wait while it's connected
                     while (connection1?.isConnected() == true && isRunning.get()) {
-                        delay(5000)
+                        delay(10000) // Check every 10 seconds
                     }
                 }
+
+                // If we're here, connection was lost
+                // The ImprovedAMQPConnection will handle reconnection internally
+                // We just need to wait for it to signal readiness
+                if (!isRunning.get()) break
+
+                // Wait a bit before checking connection state again
+                delay(5000)
+
             } catch (e: Exception) {
                 CrashlyticsLogger.logCriticalError(
                     "Connection1",
-                    "Connection 1 error: ${e.message}",
+                    "Connection 1 unexpected error: ${e.message}",
                     e
                 )
-                notifyError("Queue 1 disconnected")
+                delay(10000)
             }
-
-            // Reconnect delay
-            delay(5000)
         }
     }
 
     private suspend fun startConnection2(phone: String) {
         val queueName = "APK_SYNC_$phone"
 
+        // Create connection with improved error handling
+        connection2 = ImprovedAMQPConnection(CONNECTION_URL, queueName, phone, connectionManager)
+        processor2 = MessageProcessor(this@MainSyncService, queueName, phone)
+
+        // Monitor connection state
+        serviceScope.launch {
+            connection2?.connectionState?.collect { state ->
+                when (state) {
+                    ImprovedAMQPConnection.ConnectionState.CONNECTED -> {
+                        updateNotification("Queue 2 connected")
+                        CrashlyticsLogger.logConnectionEvent("CONNECTED", queueName, "Connection 2 established")
+                    }
+                    ImprovedAMQPConnection.ConnectionState.ERROR -> {
+                        val stats = connection2?.getConnectionStats()
+                        val failures = stats?.get("consecutiveFailures") ?: 0
+                        if (failures as Int > 50) {
+                            notifyError("Queue 2 persistent error")
+                        }
+                    }
+                    ImprovedAMQPConnection.ConnectionState.RECONNECTING -> {
+                        updateNotification("Queue 2 reconnecting...")
+                    }
+                    ImprovedAMQPConnection.ConnectionState.DISCONNECTED -> {
+                        updateNotification("Queue 2 disconnected")
+                    }
+                    else -> {}
+                }
+            }
+        }
+
+        // Connect with automatic retry
         while (isRunning.get()) {
             try {
-                connection2 = ResilientAMQPConnection(CONNECTION_URL, queueName, phone)
-                processor2 = MessageProcessor(this@MainSyncService, queueName, phone)
-
                 val connected = connection2?.connect { message ->
                     processor2?.processMessage(message, connection2!!) ?: false
                 } ?: false
 
                 if (connected) {
-                    updateNotification("Queue 2 connected")
-                    CrashlyticsLogger.logConnectionEvent("CONNECTED", queueName, "Connection 2 established")
-
-                    // Wait while connected
+                    // Connection will maintain itself
+                    // Just wait while it's connected
                     while (connection2?.isConnected() == true && isRunning.get()) {
-                        delay(5000)
+                        delay(10000) // Check every 10 seconds
                     }
                 }
+
+                // If we're here, connection was lost
+                // The ImprovedAMQPConnection will handle reconnection internally
+                // We just need to wait for it to signal readiness
+                if (!isRunning.get()) break
+
+                // Wait a bit before checking connection state again
+                delay(5000)
+
             } catch (e: Exception) {
                 CrashlyticsLogger.logCriticalError(
                     "Connection2",
-                    "Connection 2 error: ${e.message}",
+                    "Connection 2 unexpected error: ${e.message}",
                     e
                 )
-                notifyError("Queue 2 disconnected")
+                delay(10000)
             }
-
-            // Reconnect delay
-            delay(5000)
         }
     }
 
@@ -252,25 +320,45 @@ class MainSyncService : Service() {
 
             val conn1Status = connection1?.isConnected() ?: false
             val conn2Status = connection2?.isConnected() ?: false
+            val networkState = connectionManager.networkState.value
 
             val status = when {
+                !networkState.isConnected -> "No network"
                 conn1Status && conn2Status -> "Both queues connected"
                 conn1Status -> "Queue 1 connected"
                 conn2Status -> "Queue 2 connected"
                 else -> "Reconnecting..."
             }
 
-            updateNotification(status)
+            // Add network type to status if connected
+            val fullStatus = if (networkState.isConnected) {
+                "$status (${networkState.networkType.name})"
+            } else {
+                status
+            }
 
-            // Log health status
+            updateNotification(fullStatus)
+
+            // Log health status with more details
+            val conn1Stats = connection1?.getConnectionStats()
+            val conn2Stats = connection2?.getConnectionStats()
+
             CrashlyticsLogger.logServiceStatus(
                 "MainSyncService",
                 "HEALTH_CHECK",
-                "Conn1: $conn1Status, Conn2: $conn2Status"
+                "Network: ${networkState.networkType}, Conn1: $conn1Status (failures: ${conn1Stats?.get("consecutiveFailures")}), Conn2: $conn2Status (failures: ${conn2Stats?.get("consecutiveFailures")})"
             )
 
             // Check memory
             checkMemoryStatus()
+
+            // Check if we should notify about persistent errors
+            val conn1Failures = (conn1Stats?.get("consecutiveFailures") as? Int) ?: 0
+            val conn2Failures = (conn2Stats?.get("consecutiveFailures") as? Int) ?: 0
+
+            if (conn1Failures > 100 || conn2Failures > 100) {
+                notifyError("Persistent connection errors - check CloudAMQP service")
+            }
         }
     }
 
@@ -391,6 +479,9 @@ class MainSyncService : Service() {
         // Cleanup processors
         processor1?.cleanup()
         processor2?.cleanup()
+
+        // Cleanup connection manager
+        connectionManager.cleanup()
 
         // Release wake lock
         if (wakeLock.isHeld) {

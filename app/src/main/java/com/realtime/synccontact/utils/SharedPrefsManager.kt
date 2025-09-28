@@ -3,7 +3,7 @@ package com.realtime.synccontact.utils
 import android.content.Context
 import android.content.SharedPreferences
 
-class SharedPrefsManager(context: Context) {
+class SharedPrefsManager(private val context: Context) {
 
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences(
         PREFS_NAME, Context.MODE_PRIVATE
@@ -98,4 +98,97 @@ class SharedPrefsManager(context: Context) {
     fun clear() {
         sharedPreferences.edit().clear().apply()
     }
+
+    fun setServiceStartTime(time: Long = System.currentTimeMillis()) {
+        sharedPreferences.edit().putLong("service_start_time", time).apply()
+    }
+
+    fun getServiceStartTime(): Long {
+        return sharedPreferences.getLong("service_start_time", System.currentTimeMillis())
+    }
+
+    fun setLastHeartbeat(time: Long = System.currentTimeMillis()) {
+        sharedPreferences.edit().putLong("last_heartbeat", time).apply()
+    }
+
+    fun getLastHeartbeat(): Long {
+        return sharedPreferences.getLong("last_heartbeat", 0)
+    }
+
+    fun setServiceStatus(status: String) {
+        sharedPreferences.edit().putString("service_status", status).apply()
+    }
+
+    fun getServiceStatus(): String {
+        return sharedPreferences.getString("service_status", "unknown") ?: "unknown"
+    }
+
+    fun setServiceDeathTime(time: Long = System.currentTimeMillis()) {
+        sharedPreferences.edit().putLong("service_death_time", time).apply()
+    }
+
+    fun getServiceDeathTime(): Long {
+        return sharedPreferences.getLong("service_death_time", 0)
+    }
+
+    fun incrementServiceDeathCount() {
+        val current = sharedPreferences.getInt("service_death_count", 0)
+        sharedPreferences.edit().putInt("service_death_count", current + 1).apply()
+    }
+
+    fun getServiceDeathCount(): Int {
+        return sharedPreferences.getInt("service_death_count", 0)
+    }
+
+    // CloudAMQP Monitoring Methods
+    fun getDailyConnectionCount(): Int {
+        return getCloudAMQPPrefs().getInt("daily_connections", 0)
+    }
+
+    fun incrementDailyConnectionCount() {
+        val current = getDailyConnectionCount()
+        getCloudAMQPPrefs().edit().putInt("daily_connections", current + 1).apply()
+    }
+
+    fun getDailyMessageCount(): Long {
+        return getCloudAMQPPrefs().getLong("daily_messages", 0)
+    }
+
+    fun incrementDailyMessageCount() {
+        val current = getDailyMessageCount()
+        getCloudAMQPPrefs().edit().putLong("daily_messages", current + 1).apply()
+    }
+
+    fun getHourlyErrorCount(): Int {
+        val lastReset = getCloudAMQPPrefs().getLong("error_count_reset", 0)
+        val now = System.currentTimeMillis()
+
+        // Reset if more than an hour
+        if (now - lastReset > 3600000) {
+            getCloudAMQPPrefs().edit()
+                .putInt("hourly_errors", 0)
+                .putLong("error_count_reset", now)
+                .apply()
+            return 0
+        }
+
+        return getCloudAMQPPrefs().getInt("hourly_errors", 0)
+    }
+
+    fun incrementHourlyErrorCount() {
+        val current = getHourlyErrorCount()
+        getCloudAMQPPrefs().edit().putInt("hourly_errors", current + 1).apply()
+    }
+
+    fun resetDailyCounters() {
+        getCloudAMQPPrefs().edit()
+            .putInt("daily_connections", 0)
+            .putLong("daily_messages", 0)
+            .putInt("hourly_errors", 0)
+            .putLong("last_reset", System.currentTimeMillis())
+            .apply()
+    }
+
+    private fun getCloudAMQPPrefs() =
+        context.getSharedPreferences("cloudamqp_monitor", Context.MODE_PRIVATE)
 }

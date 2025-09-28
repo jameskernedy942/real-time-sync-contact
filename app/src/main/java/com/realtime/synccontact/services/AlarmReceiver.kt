@@ -48,7 +48,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
     companion object {
         private const val ACTION_HEALTH_CHECK = "com.realtimeapksync.realtimeapksync.ALARM_CHECK"
-        private const val ALARM_INTERVAL_MS = 5 * 60 * 1000L // 5 minutes
+        private const val ALARM_INTERVAL_MS = 15 * 60 * 1000L // 15 minutes (minimum for Doze mode)
 
         fun scheduleAlarm(context: Context) {
             try {

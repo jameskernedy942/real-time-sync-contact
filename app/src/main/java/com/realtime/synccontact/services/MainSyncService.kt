@@ -3,17 +3,26 @@ package com.realtime.synccontact.services
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.content.ComponentCallbacks2
 import android.content.pm.ServiceInfo
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.net.Uri
 import android.os.*
+import android.net.wifi.WifiManager
+import android.provider.Settings
+import android.app.admin.DevicePolicyManager
+import android.content.ComponentName
 import androidx.core.app.NotificationCompat
 import com.realtime.synccontact.BuildConfig
+import com.realtime.synccontact.DeviceAdminSetupActivity
+import com.realtime.synccontact.admin.DeviceAdminReceiver
 import com.realtime.synccontact.MainActivity
 import com.realtime.synccontact.R
 import com.realtime.synccontact.amqp.MessageProcessor
-import com.realtime.synccontact.amqp.ImprovedAMQPConnection
+import com.realtime.synccontact.amqp.ThreadSafeAMQPConnection
 import com.realtime.synccontact.data.LocalRetryQueue
+import com.realtime.synccontact.monitoring.CloudAMQPMonitor
 import com.realtime.synccontact.network.ConnectionManager
 import com.realtime.synccontact.utils.CrashlyticsLogger
 import com.realtime.synccontact.utils.NotificationHelper
@@ -22,25 +31,61 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 import java.util.concurrent.atomic.AtomicBoolean
 
-class MainSyncService : Service() {
+class MainSyncService : Service(), ComponentCallbacks2 {
 
     private val isRunning = AtomicBoolean(false)
     private lateinit var sharedPrefsManager: SharedPrefsManager
     private lateinit var notificationHelper: NotificationHelper
     private lateinit var wakeLock: PowerManager.WakeLock
+    private lateinit var wifiLock: WifiManager.WifiLock
     private lateinit var connectivityManager: ConnectivityManager
     private lateinit var connectionManager: ConnectionManager
+    private lateinit var cloudAMQPMonitor: CloudAMQPMonitor
+    private lateinit var devicePolicyManager: DevicePolicyManager
+    private lateinit var deviceAdminComponent: ComponentName
 
-    private var connection1: ImprovedAMQPConnection? = null
-    private var connection2: ImprovedAMQPConnection? = null
+    private val wakeRenewHandler = Handler(Looper.getMainLooper())
+    private val deviceAdminCheckHandler = Handler(Looper.getMainLooper())
+    private var lastAliveNotificationTime = 0L
+    private val ALIVE_NOTIFICATION_INTERVAL = 3600000L // 1 hour
+    private val DEVICE_ADMIN_CHECK_INTERVAL = 300000L // 5 minutes
+
+    private var connection1: ThreadSafeAMQPConnection? = null
+    private var connection2: ThreadSafeAMQPConnection? = null
     private var processor1: MessageProcessor? = null
     private var processor2: MessageProcessor? = null
 
     private val serviceScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
     private val mainHandler = Handler(Looper.getMainLooper())
+    private var networkCallback: ConnectivityManager.NetworkCallback? = null
 
     private var lastErrorNotificationTime = 0L
     private val ERROR_NOTIFICATION_RATE_LIMIT = 60000L // 1 minute
+
+    private val renewWakeLockRunnable = object : Runnable {
+        override fun run() {
+            try {
+                if (::wakeLock.isInitialized) {
+                    if (wakeLock.isHeld) {
+                        wakeLock.release()
+                    }
+                    wakeLock.acquire(10 * 60 * 1000L) // 10 minutes
+
+                    CrashlyticsLogger.log(
+                        CrashlyticsLogger.LogLevel.DEBUG,
+                        "WakeLock",
+                        "Wake lock renewed successfully"
+                    )
+                }
+                // Schedule next renewal in 9 minutes
+                wakeRenewHandler.postDelayed(this, 9 * 60 * 1000L)
+            } catch (e: Exception) {
+                CrashlyticsLogger.logCriticalError("WakeLock", "Renewal failed", e)
+                // Retry in 1 minute if failed
+                wakeRenewHandler.postDelayed(this, 60000L)
+            }
+        }
+    }
 
     companion object {
         private const val NOTIFICATION_ID = 1001
@@ -59,91 +104,220 @@ class MainSyncService : Service() {
 
     override fun onCreate() {
         super.onCreate()
+
+        // Initialize only essential lightweight components synchronously
         sharedPrefsManager = SharedPrefsManager(this)
         notificationHelper = NotificationHelper(this)
         connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
-        connectionManager = ConnectionManager(this)
+        devicePolicyManager = getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
+        deviceAdminComponent = ComponentName(this, DeviceAdminReceiver::class.java)
 
-        // Acquire wake lock
+        // Initialize wake locks (lightweight)
         val powerManager = getSystemService(POWER_SERVICE) as PowerManager
         wakeLock = powerManager.newWakeLock(
             PowerManager.PARTIAL_WAKE_LOCK,
             "RealTimeSync::SyncWakeLock"
         )
-        wakeLock.acquire()
+
+        val wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
+        wifiLock = wifiManager.createWifiLock(
+            WifiManager.WIFI_MODE_FULL_HIGH_PERF,
+            "RealTimeSync::WifiLock"
+        )
+
+        // Defer heavy initialization to background
+        serviceScope.launch {
+            try {
+                // Initialize heavy components in background
+                withContext(Dispatchers.IO) {
+                    cloudAMQPMonitor = CloudAMQPMonitor(this@MainSyncService)
+                    connectionManager = ConnectionManager(this@MainSyncService)
+                }
+
+                // Switch to main thread for UI-related operations
+                withContext(Dispatchers.Main) {
+                    // Acquire locks
+                    if (!wakeLock.isHeld) {
+                        wakeLock.acquire(10 * 60 * 1000L)
+                    }
+                    if (!wifiLock.isHeld) {
+                        wifiLock.acquire()
+                    }
+
+                    // Start wake lock renewal
+                    renewWakeLockRunnable.run()
+
+                    // Register callbacks
+                    registerNetworkCallback()
+
+                    // Start monitoring
+                    startDeviceAdminMonitoring()
+
+                    // Check optimizations (non-blocking)
+                    checkBatteryOptimization()
+                    checkAndForceDeviceAdmin()
+                }
+
+                CrashlyticsLogger.logServiceStatus("MainSyncService", "INITIALIZED")
+            } catch (e: Exception) {
+                CrashlyticsLogger.logCriticalError("MainSyncService", "Initialization failed", e)
+            }
+        }
 
         CrashlyticsLogger.logServiceStatus("MainSyncService", "CREATED")
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        // CRITICAL: Must call startForeground within 5 seconds on Android 8+
+        // Do this IMMEDIATELY to avoid ANR
         if (!isRunning.get()) {
+            // Start foreground IMMEDIATELY
             startForegroundService()
-            startSyncOperations()
             isRunning.set(true)
-        }
 
-        // Schedule health checks
-        scheduleHealthChecks()
+            // Set service start time
+            sharedPrefsManager.setServiceStartTime()
+            sharedPrefsManager.setServiceStatus("running")
+
+            // Defer all heavy operations to background
+            serviceScope.launch {
+                try {
+                    // Wait a bit for onCreate initialization to complete
+                    delay(100)
+
+                    // Ensure components are initialized
+                    var retries = 0
+                    while ((!::cloudAMQPMonitor.isInitialized || !::connectionManager.isInitialized) && retries < 50) {
+                        delay(100)
+                        retries++
+                    }
+
+                    if (!::cloudAMQPMonitor.isInitialized || !::connectionManager.isInitialized) {
+                        CrashlyticsLogger.logCriticalError(
+                            "MainSyncService",
+                            "Components not initialized after 5 seconds",
+                            IllegalStateException("Initialization timeout")
+                        )
+                        return@launch
+                    }
+
+                    // Now start actual sync operations
+                    withContext(Dispatchers.IO) {
+                        startSyncOperations()
+                    }
+
+                    // Send alive notification
+                    sendAliveNotification()
+
+                    // Start heartbeat
+                    startHeartbeat()
+
+                    // Schedule JobScheduler for resurrection
+                    withContext(Dispatchers.Main) {
+                        ServiceResurrectionJob.schedule(this@MainSyncService)
+                    }
+
+                    // Schedule health checks
+                    scheduleHealthChecks()
+
+                } catch (e: Exception) {
+                    CrashlyticsLogger.logCriticalError("MainSyncService", "Failed to start operations", e)
+                    updateNotification("Error: ${e.message}")
+                }
+            }
+        }
 
         return START_STICKY
     }
 
     private fun startForegroundService() {
-        val notification = createNotification("Initializing...")
+        // Create a simple notification FAST to avoid ANR
+        val notification = createSimpleNotification()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             startForeground(NOTIFICATION_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC)
         } else {
             startForeground(NOTIFICATION_ID, notification)
         }
+
+        // Update with detailed notification later
+        serviceScope.launch {
+            delay(100)
+            val detailedNotification = createNotification("Starting...")
+            val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.notify(NOTIFICATION_ID, detailedNotification)
+        }
+    }
+
+    private fun createSimpleNotification(): Notification {
+        // Create minimal notification FAST
+        return NotificationCompat.Builder(this, NotificationHelper.CHANNEL_ID_SERVICE)
+            .setContentTitle("Real Time Sync")
+            .setContentText("Starting service...")
+            .setSmallIcon(R.drawable.ic_notification)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setOngoing(true)
+            .build()
     }
 
     private fun createNotification(status: String): Notification {
-        val (phone1, phone2) = sharedPrefsManager.getPhoneNumbers()
-        val networkType = getNetworkType()
+        return try {
+            val (phone1, phone2) = sharedPrefsManager.getPhoneNumbers()
+            val networkType = try {
+                getNetworkType()
+            } catch (e: Exception) {
+                "Unknown"
+            }
 
-        val activeNumbers = if (phone2.isNotEmpty()) {
-            "${phone1.takeLast(4)}, ${phone2.takeLast(4)}"
-        } else {
-            phone1.takeLast(4)
+            val activeNumbers = if (phone2.isNotEmpty()) {
+                "${phone1.takeLast(4)}, ${phone2.takeLast(4)}"
+            } else {
+                phone1.takeLast(4)
+            }
+
+            val contentText = """
+                Active: $activeNumbers
+                Network: $networkType
+                $status
+            """.trimIndent()
+
+            val intent = Intent(this, MainActivity::class.java)
+            val pendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+
+            NotificationCompat.Builder(this, NotificationHelper.CHANNEL_ID_SERVICE)
+                .setContentTitle("Real Time Sync Active")
+                .setContentText(contentText)
+                .setStyle(NotificationCompat.BigTextStyle().bigText(contentText))
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentIntent(pendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setOngoing(true)
+                .setShowWhen(false)
+                .build()
+        } catch (e: Exception) {
+            // Fallback to simple notification on error
+            createSimpleNotification()
         }
-
-        val contentText = """
-            Active: $activeNumbers
-            Network: $networkType
-            $status
-        """.trimIndent()
-
-        val intent = Intent(this, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(
-            this,
-            0,
-            intent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-
-        return NotificationCompat.Builder(this, NotificationHelper.CHANNEL_ID_SERVICE)
-            .setContentTitle("Real Time Sync Active")
-            .setContentText(contentText)
-            .setStyle(NotificationCompat.BigTextStyle().bigText(contentText))
-            .setSmallIcon(R.drawable.ic_notification)
-            .setContentIntent(pendingIntent)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setOngoing(true)
-            .setShowWhen(false)
-            .build()
     }
 
     private fun startSyncOperations() {
         val (phone1, phone2) = sharedPrefsManager.getPhoneNumbers()
 
         if (phone1.isEmpty()) {
-            CrashlyticsLogger.logCriticalError(
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.WARNING,
                 "MainSyncService",
-                "First phone number not configured",
-                null
+                "Phone number not configured - waiting for configuration"
             )
-            stopSelf()
+
+            // Don't stop service, wait for configuration
+            scheduleConfigCheck()
+            updateNotification("Waiting for phone number configuration...")
             return
         }
 
@@ -183,29 +357,45 @@ class MainSyncService : Service() {
     private suspend fun startConnection1(phone: String) {
         val queueName = "APK_SYNC_$phone"
 
-        // Create connection with improved error handling
-        connection1 = ImprovedAMQPConnection(CONNECTION_URL, queueName, phone, connectionManager)
+        // Check CloudAMQP limits before connecting
+        if (!cloudAMQPMonitor.shouldAllowConnection()) {
+            val delay = cloudAMQPMonitor.getRetryDelay()
+            updateNotification("Rate limited. Retry in ${delay/1000}s")
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.WARNING,
+                "Connection1",
+                "Rate limited, waiting ${delay/1000}s"
+            )
+            delay(delay)
+            return
+        }
+
+        // Record connection attempt
+        cloudAMQPMonitor.recordConnection()
+
+        // Create thread-safe connection to prevent deadlocks
+        connection1 = ThreadSafeAMQPConnection(CONNECTION_URL, queueName, phone, connectionManager)
         processor1 = MessageProcessor(this@MainSyncService, queueName, phone)
 
         // Monitor connection state
         serviceScope.launch {
             connection1?.connectionState?.collect { state ->
                 when (state) {
-                    ImprovedAMQPConnection.ConnectionState.CONNECTED -> {
+                    ThreadSafeAMQPConnection.ConnectionState.CONNECTED -> {
                         updateNotification("Queue 1 connected")
                         CrashlyticsLogger.logConnectionEvent("CONNECTED", queueName, "Connection 1 established")
                     }
-                    ImprovedAMQPConnection.ConnectionState.ERROR -> {
+                    ThreadSafeAMQPConnection.ConnectionState.ERROR -> {
                         val stats = connection1?.getConnectionStats()
                         val failures = stats?.get("consecutiveFailures") ?: 0
                         if (failures as Int > 50) {
                             notifyError("Queue 1 persistent error")
                         }
                     }
-                    ImprovedAMQPConnection.ConnectionState.RECONNECTING -> {
+                    ThreadSafeAMQPConnection.ConnectionState.RECONNECTING -> {
                         updateNotification("Queue 1 reconnecting...")
                     }
-                    ImprovedAMQPConnection.ConnectionState.DISCONNECTED -> {
+                    ThreadSafeAMQPConnection.ConnectionState.DISCONNECTED -> {
                         updateNotification("Queue 1 disconnected")
                     }
                     else -> {}
@@ -242,7 +432,13 @@ class MainSyncService : Service() {
                     "Connection 1 unexpected error: ${e.message}",
                     e
                 )
-                delay(10000)
+
+                // Record error for CloudAMQP monitoring
+                cloudAMQPMonitor.recordError(e)
+
+                // Get appropriate delay based on error
+                val retryDelay = cloudAMQPMonitor.getRetryDelay()
+                delay(retryDelay)
             }
         }
     }
@@ -250,29 +446,45 @@ class MainSyncService : Service() {
     private suspend fun startConnection2(phone: String) {
         val queueName = "APK_SYNC_$phone"
 
-        // Create connection with improved error handling
-        connection2 = ImprovedAMQPConnection(CONNECTION_URL, queueName, phone, connectionManager)
+        // Check CloudAMQP limits before connecting
+        if (!cloudAMQPMonitor.shouldAllowConnection()) {
+            val delay = cloudAMQPMonitor.getRetryDelay()
+            updateNotification("Rate limited. Retry in ${delay/1000}s")
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.WARNING,
+                "Connection2",
+                "Rate limited, waiting ${delay/1000}s"
+            )
+            delay(delay)
+            return
+        }
+
+        // Record connection attempt
+        cloudAMQPMonitor.recordConnection()
+
+        // Create thread-safe connection to prevent deadlocks
+        connection2 = ThreadSafeAMQPConnection(CONNECTION_URL, queueName, phone, connectionManager)
         processor2 = MessageProcessor(this@MainSyncService, queueName, phone)
 
         // Monitor connection state
         serviceScope.launch {
             connection2?.connectionState?.collect { state ->
                 when (state) {
-                    ImprovedAMQPConnection.ConnectionState.CONNECTED -> {
+                    ThreadSafeAMQPConnection.ConnectionState.CONNECTED -> {
                         updateNotification("Queue 2 connected")
                         CrashlyticsLogger.logConnectionEvent("CONNECTED", queueName, "Connection 2 established")
                     }
-                    ImprovedAMQPConnection.ConnectionState.ERROR -> {
+                    ThreadSafeAMQPConnection.ConnectionState.ERROR -> {
                         val stats = connection2?.getConnectionStats()
                         val failures = stats?.get("consecutiveFailures") ?: 0
                         if (failures as Int > 50) {
                             notifyError("Queue 2 persistent error")
                         }
                     }
-                    ImprovedAMQPConnection.ConnectionState.RECONNECTING -> {
+                    ThreadSafeAMQPConnection.ConnectionState.RECONNECTING -> {
                         updateNotification("Queue 2 reconnecting...")
                     }
-                    ImprovedAMQPConnection.ConnectionState.DISCONNECTED -> {
+                    ThreadSafeAMQPConnection.ConnectionState.DISCONNECTED -> {
                         updateNotification("Queue 2 disconnected")
                     }
                     else -> {}
@@ -309,7 +521,13 @@ class MainSyncService : Service() {
                     "Connection 2 unexpected error: ${e.message}",
                     e
                 )
-                delay(10000)
+
+                // Record error for CloudAMQP monitoring
+                cloudAMQPMonitor.recordError(e)
+
+                // Get appropriate delay based on error
+                val retryDelay = cloudAMQPMonitor.getRetryDelay()
+                delay(retryDelay)
             }
         }
     }
@@ -467,14 +685,34 @@ class MainSyncService : Service() {
     override fun onDestroy() {
         isRunning.set(false)
 
+        // Update service status
+        sharedPrefsManager.setServiceStatus("stopped")
+        sharedPrefsManager.setServiceDeathTime()
+        sharedPrefsManager.incrementServiceDeathCount()
+
+        // Send death notification
+        sendDeathNotification()
+
         // Cancel all coroutines
         serviceScope.cancel()
+
+        // Stop wake lock renewal
+        wakeRenewHandler.removeCallbacks(renewWakeLockRunnable)
+
+        // Unregister network callback
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && networkCallback != null) {
+            try {
+                connectivityManager.unregisterNetworkCallback(networkCallback!!)
+            } catch (e: Exception) {
+                // Ignore
+            }
+        }
 
         // Disconnect AMQP connections
         connection1?.disconnect()
         connection2?.disconnect()
-        connection1?.cancelScope()
-        connection2?.cancelScope()
+        connection1?.cleanup()
+        connection2?.cleanup()
 
         // Cleanup processors
         processor1?.cleanup()
@@ -483,9 +721,22 @@ class MainSyncService : Service() {
         // Cleanup connection manager
         connectionManager.cleanup()
 
-        // Release wake lock
-        if (wakeLock.isHeld) {
+        // Cleanup CloudAMQP monitor
+        cloudAMQPMonitor.cleanup()
+
+        // Record disconnections
+        cloudAMQPMonitor.recordDisconnection()
+        if (connection2 != null) {
+            cloudAMQPMonitor.recordDisconnection()
+        }
+
+        // Release locks
+        if (::wakeLock.isInitialized && wakeLock.isHeld) {
             wakeLock.release()
+        }
+
+        if (::wifiLock.isInitialized && wifiLock.isHeld) {
+            wifiLock.release()
         }
 
         CrashlyticsLogger.logServiceStatus("MainSyncService", "DESTROYED")
@@ -518,5 +769,450 @@ class MainSyncService : Service() {
         )
 
         super.onTaskRemoved(rootIntent)
+    }
+
+
+    private fun scheduleConfigCheck() {
+        serviceScope.launch {
+            while (isRunning.get()) {
+                delay(30000) // Check every 30 seconds
+
+                val (phone1, _) = sharedPrefsManager.getPhoneNumbers()
+                if (phone1.isNotEmpty()) {
+                    CrashlyticsLogger.log(
+                        CrashlyticsLogger.LogLevel.INFO,
+                        "MainSyncService",
+                        "Configuration detected - starting sync"
+                    )
+                    startSyncOperations()
+                    break
+                }
+            }
+        }
+    }
+
+    private fun checkBatteryOptimization() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val powerManager = getSystemService(POWER_SERVICE) as PowerManager
+            if (!powerManager.isIgnoringBatteryOptimizations(packageName)) {
+                notificationHelper.showNotification(
+                    "Battery Optimization Warning",
+                    "App may stop syncing! Tap to disable battery optimization",
+                    Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
+                        data = Uri.parse("package:$packageName")
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    }
+                )
+
+                CrashlyticsLogger.log(
+                    CrashlyticsLogger.LogLevel.WARNING,
+                    "Battery",
+                    "App not whitelisted from battery optimization"
+                )
+            }
+        }
+    }
+
+    private fun checkAndForceDeviceAdmin() {
+        if (!devicePolicyManager.isAdminActive(deviceAdminComponent)) {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.ERROR,
+                "DeviceAdmin",
+                "Device Admin NOT active - forcing activation"
+            )
+
+            // Show critical notification
+            notificationHelper.showCriticalNotification(
+                "⚠️ DEVICE ADMIN REQUIRED",
+                "Service cannot function without Device Admin! Tap to enable NOW."
+            )
+
+            // Launch setup activity
+            try {
+                val intent = Intent(this, DeviceAdminSetupActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                }
+                startActivity(intent)
+            } catch (e: Exception) {
+                // Fallback to device admin settings
+                try {
+                    val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN).apply {
+                        putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, deviceAdminComponent)
+                        putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
+                            "MANDATORY: Device Admin is REQUIRED for 24/7 operation")
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    }
+                    startActivity(intent)
+                } catch (e2: Exception) {
+                    CrashlyticsLogger.logCriticalError(
+                        "DeviceAdmin",
+                        "Failed to launch Device Admin setup",
+                        e2
+                    )
+                }
+            }
+        } else {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.INFO,
+                "DeviceAdmin",
+                "Device Admin is active"
+            )
+        }
+    }
+
+    private fun startDeviceAdminMonitoring() {
+        val checkRunnable = object : Runnable {
+            override fun run() {
+                if (!devicePolicyManager.isAdminActive(deviceAdminComponent)) {
+                    CrashlyticsLogger.log(
+                        CrashlyticsLogger.LogLevel.ERROR,
+                        "DeviceAdmin",
+                        "Device Admin was disabled! Forcing re-activation"
+                    )
+
+                    // Update service status
+                    sharedPrefsManager.setServiceStatus("device_admin_missing")
+
+                    // Force re-enable
+                    checkAndForceDeviceAdmin()
+
+                    // Show persistent notification
+                    notificationHelper.showCriticalNotification(
+                        "❌ DEVICE ADMIN DISABLED",
+                        "Service STOPPED! Re-enable Device Admin immediately!"
+                    )
+
+                    // Try to prevent service death by restarting with alarm
+                    val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+                    val intent = Intent(this@MainSyncService, AlarmReceiver::class.java)
+                    val pendingIntent = PendingIntent.getBroadcast(
+                        this@MainSyncService,
+                        0,
+                        intent,
+                        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                    )
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        alarmManager.setExactAndAllowWhileIdle(
+                            AlarmManager.RTC_WAKEUP,
+                            System.currentTimeMillis() + 10000,
+                            pendingIntent
+                        )
+                    } else {
+                        alarmManager.setExact(
+                            AlarmManager.RTC_WAKEUP,
+                            System.currentTimeMillis() + 10000,
+                            pendingIntent
+                        )
+                    }
+                }
+
+                // Schedule next check
+                deviceAdminCheckHandler.postDelayed(this, DEVICE_ADMIN_CHECK_INTERVAL)
+            }
+        }
+
+        // Start monitoring
+        deviceAdminCheckHandler.post(checkRunnable)
+    }
+
+    private fun registerNetworkCallback() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            networkCallback = object : ConnectivityManager.NetworkCallback() {
+                override fun onAvailable(network: android.net.Network) {
+                    super.onAvailable(network)
+                    CrashlyticsLogger.log(
+                        CrashlyticsLogger.LogLevel.INFO,
+                        "Network",
+                        "Network available - triggering immediate reconnection"
+                    )
+
+                    // Immediate reconnection attempt
+                    serviceScope.launch {
+                        delay(500) // Small delay to let network stabilize
+                        reconnectAll()
+                    }
+                }
+
+                override fun onLost(network: android.net.Network) {
+                    super.onLost(network)
+                    CrashlyticsLogger.log(
+                        CrashlyticsLogger.LogLevel.WARNING,
+                        "Network",
+                        "Network lost - connections will be disrupted"
+                    )
+
+                    updateNotification("Network lost - waiting for reconnection...")
+                }
+
+                override fun onCapabilitiesChanged(
+                    network: android.net.Network,
+                    networkCapabilities: NetworkCapabilities
+                ) {
+                    super.onCapabilitiesChanged(network, networkCapabilities)
+
+                    val hasInternet = networkCapabilities.hasCapability(
+                        NetworkCapabilities.NET_CAPABILITY_INTERNET
+                    )
+                    val isValidated = networkCapabilities.hasCapability(
+                        NetworkCapabilities.NET_CAPABILITY_VALIDATED
+                    )
+
+                    if (hasInternet && isValidated) {
+                        CrashlyticsLogger.log(
+                            CrashlyticsLogger.LogLevel.DEBUG,
+                            "Network",
+                            "Network capabilities changed - Internet available"
+                        )
+
+                        // Check if connections need reconnection
+                        if (connection1?.isConnected() != true || connection2?.isConnected() != true) {
+                            serviceScope.launch {
+                                reconnectAll()
+                            }
+                        }
+                    }
+                }
+            }
+
+            val networkRequest = android.net.NetworkRequest.Builder()
+                .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                .addCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
+                .build()
+
+            try {
+                connectivityManager.registerNetworkCallback(networkRequest, networkCallback!!)
+                CrashlyticsLogger.log(
+                    CrashlyticsLogger.LogLevel.INFO,
+                    "Network",
+                    "Network callback registered successfully"
+                )
+            } catch (e: Exception) {
+                CrashlyticsLogger.logCriticalError("Network", "Failed to register network callback", e)
+            }
+        }
+    }
+
+    private suspend fun reconnectAll() {
+        withContext(Dispatchers.IO) {
+            try {
+                // Check if we should reconnect
+                if (!isRunning.get()) return@withContext
+
+                CrashlyticsLogger.log(
+                    CrashlyticsLogger.LogLevel.INFO,
+                    "Network",
+                    "Attempting to reconnect all connections"
+                )
+
+                // Check connection states and restart if needed
+                if (connection1?.isConnected() != true || connection2?.isConnected() != true) {
+                    // Restart sync operations to properly reconnect with message handlers
+                    startSyncOperations()
+                }
+
+                updateNotification("Reconnected to network")
+            } catch (e: Exception) {
+                CrashlyticsLogger.logCriticalError("Network", "Failed to reconnect", e)
+            }
+        }
+    }
+
+    private fun sendAliveNotification() {
+        serviceScope.launch {
+            while (isRunning.get()) {
+                delay(ALIVE_NOTIFICATION_INTERVAL) // Every hour
+
+                val currentTime = System.currentTimeMillis()
+                if (currentTime - lastAliveNotificationTime > ALIVE_NOTIFICATION_INTERVAL) {
+                    lastAliveNotificationTime = currentTime
+
+                    val conn1Status = connection1?.isConnected() ?: false
+                    val conn2Status = connection2?.isConnected() ?: false
+                    val runtime = (currentTime - sharedPrefsManager.getServiceStartTime()) / 1000 / 60 // minutes
+                    val totalSynced = sharedPrefsManager.getTotalSynced()
+
+                    notificationHelper.showStatusNotification(
+                        "✅ Service Running",
+                        "Uptime: ${runtime}min | Synced: $totalSynced | Q1:${if(conn1Status) "✓" else "✗"} Q2:${if(conn2Status) "✓" else "✗"}"
+                    )
+                }
+            }
+        }
+    }
+
+    private fun sendDeathNotification() {
+        try {
+            val runtime = (System.currentTimeMillis() - sharedPrefsManager.getServiceStartTime()) / 1000 / 60
+            val totalSynced = sharedPrefsManager.getTotalSynced()
+
+            notificationHelper.showCriticalNotification(
+                "⚠️ SYNC SERVICE STOPPED!",
+                "Service died after ${runtime}min. Synced: $totalSynced. Tap to restart.",
+                Intent(this, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                }
+            )
+
+            // Also log to Crashlytics
+            CrashlyticsLogger.logServiceStatus(
+                "MainSyncService",
+                "DEATH",
+                "Service died after ${runtime} minutes"
+            )
+        } catch (e: Exception) {
+            // Ignore errors during death notification
+        }
+    }
+
+    private fun checkServiceHealth(): Boolean {
+        // Check if all critical components are healthy
+        val isHealthy = isRunning.get() &&
+                       (connection1?.isConnected() == true || connection2?.isConnected() == true) &&
+                       wakeLock.isHeld &&
+                       wifiLock.isHeld
+
+        if (!isHealthy) {
+            notificationHelper.showWarningNotification(
+                "⚠️ Service Unhealthy",
+                "Some components are not working. Tap to check."
+            )
+        }
+
+        return isHealthy
+    }
+
+    private fun startHeartbeat() {
+        serviceScope.launch {
+            while (isRunning.get()) {
+                delay(30000) // Every 30 seconds
+
+                // Update heartbeat
+                sharedPrefsManager.setLastHeartbeat()
+
+                // Check service health
+                if (!checkServiceHealth()) {
+                    CrashlyticsLogger.log(
+                        CrashlyticsLogger.LogLevel.WARNING,
+                        "Heartbeat",
+                        "Service unhealthy"
+                    )
+                }
+            }
+        }
+    }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+
+        CrashlyticsLogger.log(
+            CrashlyticsLogger.LogLevel.WARNING,
+            "Memory",
+            "onTrimMemory called with level: $level"
+        )
+
+        when (level) {
+            ComponentCallbacks2.TRIM_MEMORY_COMPLETE,
+            ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW -> {
+                // System is extremely low on memory, release everything possible
+                CrashlyticsLogger.log(
+                    CrashlyticsLogger.LogLevel.ERROR,
+                    "Memory",
+                    "CRITICAL memory pressure!"
+                )
+
+                // Clear all caches
+                clearAllCaches()
+                performCleanup()
+
+                // Force garbage collection
+                System.gc()
+                System.runFinalization()
+
+                // Reduce connection pool if multiple connections
+                if (connection2 != null && connection1?.isConnected() == true) {
+                    connection2?.disconnect()
+                    connection2 = null
+                    processor2 = null
+                }
+
+                updateNotification("⚠️ Critical memory pressure")
+            }
+
+            ComponentCallbacks2.TRIM_MEMORY_BACKGROUND -> {
+                // App is not visible, system running low on memory
+                CrashlyticsLogger.log(
+                    CrashlyticsLogger.LogLevel.WARNING,
+                    "Memory",
+                    "SEVERE memory pressure"
+                )
+
+                // Clear non-essential caches
+                clearAllCaches()
+                System.gc()
+            }
+
+            ComponentCallbacks2.TRIM_MEMORY_MODERATE -> {
+                // System is running somewhat low on memory
+                System.gc()
+            }
+
+            ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL -> {
+                // App is running but system critically low on memory
+                clearAllCaches()
+                performCleanup()
+                System.gc()
+
+                notificationHelper.showWarningNotification(
+                    "⚠️ Low Memory",
+                    "System is low on memory. Service may be affected."
+                )
+
+                updateNotification("⚠️ Critical memory pressure")
+            }
+        }
+    }
+
+    private fun clearAllCaches() {
+        try {
+            // Clear any local caches
+            processor1?.cleanup()
+            processor2?.cleanup()
+
+            // Connection stats are read-only, just log the cleanup
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.INFO,
+                "Memory",
+                "Caches cleared"
+            )
+        } catch (e: Exception) {
+            CrashlyticsLogger.logCriticalError("Memory", "Failed to clear caches", e)
+        }
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+
+        CrashlyticsLogger.log(
+            CrashlyticsLogger.LogLevel.ERROR,
+            "Memory",
+            "onLowMemory called - system is LOW on memory!"
+        )
+
+        CrashlyticsLogger.logMemoryWarning(0, Runtime.getRuntime().maxMemory())
+
+        // Emergency memory release
+        clearAllCaches()
+        performCleanup()
+        System.gc()
+
+        // Notify user about memory pressure
+        updateNotification("⚠️ Low memory - optimizing...")
+
+        // Show critical notification
+        notificationHelper.showCriticalNotification(
+            "⚠️ CRITICAL: Low Memory",
+            "Device is critically low on memory. Service may stop!"
+        )
     }
 }

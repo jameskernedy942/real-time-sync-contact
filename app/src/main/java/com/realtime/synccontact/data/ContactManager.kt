@@ -7,6 +7,7 @@ import android.database.Cursor
 import android.provider.ContactsContract
 import com.realtime.synccontact.utils.CrashlyticsLogger
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 class ContactManager(private val context: Context) {
@@ -147,7 +148,7 @@ class ContactManager(private val context: Context) {
         note: String?
     ): Boolean = withContext(Dispatchers.IO) {
         try {
-            Thread.sleep(500) // Brief delay before retry
+            delay(500) // Brief delay before retry
             insertContact(displayName, phoneNumber, note)
         } catch (e: Exception) {
             false

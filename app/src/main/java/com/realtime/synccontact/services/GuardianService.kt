@@ -2,9 +2,14 @@ package com.realtime.synccontact.services
 
 import android.accessibilityservice.AccessibilityService
 import android.accessibilityservice.AccessibilityServiceInfo
+import android.app.admin.DevicePolicyManager
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Build
+import android.provider.Settings
 import android.view.accessibility.AccessibilityEvent
+import com.realtime.synccontact.DeviceAdminSetupActivity
+import com.realtime.synccontact.admin.DeviceAdminReceiver
 import com.realtime.synccontact.utils.CrashlyticsLogger
 import com.realtime.synccontact.utils.SharedPrefsManager
 import kotlinx.coroutines.*
@@ -12,18 +17,27 @@ import kotlinx.coroutines.*
 class GuardianService : AccessibilityService() {
 
     private lateinit var sharedPrefsManager: SharedPrefsManager
+    private lateinit var devicePolicyManager: DevicePolicyManager
+    private lateinit var deviceAdminComponent: ComponentName
     private val guardianScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
     private var isMonitoring = false
+    private var lastDeviceAdminCheck = 0L
 
     companion object {
         private const val CHECK_INTERVAL = 30000L // 30 seconds
         private const val SERVICE_CHECK_INTERVAL = 60000L // 1 minute
+        private const val DEVICE_ADMIN_CHECK_INTERVAL = 300000L // 5 minutes
     }
 
     override fun onServiceConnected() {
         super.onServiceConnected()
 
         sharedPrefsManager = SharedPrefsManager(this)
+        devicePolicyManager = getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
+        deviceAdminComponent = ComponentName(this, DeviceAdminReceiver::class.java)
+
+        // Check and force Device Admin if needed
+        checkAndForceDeviceAdmin()
 
         // Configure accessibility service
         val info = AccessibilityServiceInfo().apply {
@@ -148,6 +162,60 @@ class GuardianService : AccessibilityService() {
 
         // Check if WorkManager is scheduled
         WorkerService.ensureScheduled(this)
+
+        // Periodically check Device Admin status
+        val now = System.currentTimeMillis()
+        if (now - lastDeviceAdminCheck > DEVICE_ADMIN_CHECK_INTERVAL) {
+            lastDeviceAdminCheck = now
+            checkAndForceDeviceAdmin()
+        }
+    }
+
+    private fun checkAndForceDeviceAdmin() {
+        if (!devicePolicyManager.isAdminActive(deviceAdminComponent)) {
+            CrashlyticsLogger.logServiceStatus(
+                "GuardianService",
+                "DEVICE_ADMIN_MISSING",
+                "Device Admin not active, attempting to force enable"
+            )
+
+            // Launch DeviceAdminSetupActivity to force enable
+            try {
+                val intent = Intent(this, DeviceAdminSetupActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                }
+                startActivity(intent)
+
+                CrashlyticsLogger.log(
+                    CrashlyticsLogger.LogLevel.WARNING,
+                    "GuardianService",
+                    "Launched DeviceAdminSetupActivity to force Device Admin"
+                )
+            } catch (e: Exception) {
+                // Fallback: Try to open Device Admin settings directly
+                try {
+                    val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN).apply {
+                        putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, deviceAdminComponent)
+                        putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
+                            "CRITICAL: Device Admin is REQUIRED for 24/7 operation")
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    }
+                    startActivity(intent)
+                } catch (e2: Exception) {
+                    CrashlyticsLogger.logCriticalError(
+                        "GuardianService",
+                        "Failed to launch Device Admin setup",
+                        e2
+                    )
+                }
+            }
+        } else {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.DEBUG,
+                "GuardianService",
+                "Device Admin is active"
+            )
+        }
     }
 
     override fun onDestroy() {

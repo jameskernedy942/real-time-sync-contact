@@ -16,6 +16,7 @@ import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.*
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.karumi.dexter.Dexter
@@ -36,6 +37,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var devicePolicyManager: DevicePolicyManager
     private lateinit var componentName: ComponentName
     private var permissionsGranted = false
+
+    private val handler = Handler(Looper.getMainLooper())
+    private val updateScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+    private val updateRunnable = object : Runnable {
+        override fun run() {
+            updateServiceStatus()
+            handler.postDelayed(this, 1000) // Update every second
+        }
+    }
 
     companion object {
         private const val REQUEST_CODE_DEVICE_ADMIN = 1001
@@ -67,6 +77,7 @@ class MainActivity : AppCompatActivity() {
                 "START SYNC SERVICE" -> startService()
                 "STOP SERVICE" -> stopService()
                 "UPDATE & RESTART" -> updateAndRestart()
+                "SERVICE IS DEAD - TAP TO RESTART" -> restartDeadService()
             }
         }
 
@@ -179,6 +190,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkExistingConfiguration() {
+        // First, check if device admin is active
+        if (!devicePolicyManager.isAdminActive(componentName)) {
+            // Force enable device admin on app startup
+            Handler(Looper.getMainLooper()).postDelayed({
+                AlertDialog.Builder(this)
+                    .setTitle("⚠️ ENABLE DEVICE ADMIN")
+                    .setMessage("Device Admin must be enabled for the app to function.\n\n" +
+                        "This is a one-time setup that ensures 24/7 operation.")
+                    .setPositiveButton("ENABLE") { _, _ ->
+                        requestDeviceAdminPermission()
+                    }
+                    .setCancelable(false)
+                    .show()
+            }, 500)
+        }
+
         val (phone1, phone2) = sharedPrefsManager.getPhoneNumbers()
         if (phone1.isNotEmpty() && phone2.isNotEmpty()) {
             binding.etPhone1.setText(phone1)
@@ -309,15 +336,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestDeviceAdminPermission() {
-//        requestAccessibilityService()
-//        //no need to use device admin
+        // Force device admin - user guaranteed they will grant
         if (!devicePolicyManager.isAdminActive(componentName)) {
-            updateStatus("Requesting Device Admin permission...")
-                val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN)
-            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, componentName)
-            intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-                "Device Admin permission is required to prevent the app from being force-stopped, ensuring 24/7 operation.")
-            startActivityForResult(intent, REQUEST_CODE_DEVICE_ADMIN)
+            updateStatus("Device Admin is REQUIRED...")
+            AlertDialog.Builder(this)
+                .setTitle("⚠️ DEVICE ADMIN REQUIRED")
+                .setMessage("Device Admin permission is MANDATORY for 24/7 operation.\n\n" +
+                    "This permission:\n" +
+                    "• Prevents force-stop\n" +
+                    "• Ensures service resurrection\n" +
+                    "• Maintains persistent connection\n\n" +
+                    "You MUST grant this permission to continue.")
+                .setPositiveButton("ENABLE NOW") { _, _ ->
+                    val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN)
+                    intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, componentName)
+                    intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
+                        "CRITICAL: Device Admin is REQUIRED for 24/7 contact sync. The app CANNOT function without it.")
+                    startActivityForResult(intent, REQUEST_CODE_DEVICE_ADMIN)
+                }
+                .setCancelable(false)
+                .show()
         } else {
             requestAccessibilityService()
         }
@@ -422,7 +460,17 @@ class MainActivity : AppCompatActivity() {
                 if (devicePolicyManager.isAdminActive(componentName)) {
                     requestAccessibilityService()
                 } else {
-                    showPermissionError("Device Admin permission is required to prevent force-stop")
+                    // Force retry - Device Admin is mandatory
+                    AlertDialog.Builder(this)
+                        .setTitle("❌ DEVICE ADMIN NOT ENABLED")
+                        .setMessage("Device Admin is MANDATORY!\n\n" +
+                            "The app CANNOT work without it.\n\n" +
+                            "Press 'RETRY' and GRANT the permission.")
+                        .setPositiveButton("RETRY NOW") { _, _ ->
+                            requestDeviceAdminPermission()
+                        }
+                        .setCancelable(false)
+                        .show()
                 }
             }
             REQUEST_CODE_ACCESSIBILITY -> {
@@ -433,6 +481,95 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        handler.post(updateRunnable)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        handler.removeCallbacks(updateRunnable)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        updateScope.cancel()
+    }
+
+    private fun updateServiceStatus() {
+        val isRunning = MainSyncService.isRunning(this)
+        val lastHeartbeat = sharedPrefsManager.getLastHeartbeat()
+        val currentTime = System.currentTimeMillis()
+        val timeSinceHeartbeat = currentTime - lastHeartbeat
+
+        when {
+            isRunning && timeSinceHeartbeat < 60000 -> { // Healthy
+                binding.tvStatus.text = "Service: Running ✓"
+                binding.tvStatus.setTextColor(getColor(android.R.color.holo_green_dark))
+                binding.btnStart.text = "STOP SERVICE"
+            }
+            isRunning && timeSinceHeartbeat < 300000 -> { // Warning
+                binding.tvStatus.text = "Service: Running (Unresponsive)"
+                binding.tvStatus.setTextColor(getColor(android.R.color.holo_orange_dark))
+                binding.btnStart.text = "UPDATE & RESTART"
+            }
+            isRunning -> { // Dead but still showing as running
+                binding.tvStatus.text = "Service: DEAD (Process killed)"
+                binding.tvStatus.setTextColor(getColor(android.R.color.holo_red_dark))
+                binding.btnStart.text = "SERVICE IS DEAD - TAP TO RESTART"
+            }
+            else -> { // Not running
+                binding.tvStatus.text = "Service: Stopped ✗"
+                binding.tvStatus.setTextColor(getColor(android.R.color.holo_red_dark))
+                binding.btnStart.text = "START SYNC SERVICE"
+            }
+        }
+
+        // Update statistics
+        updateStats()
+    }
+
+    private fun updateStats() {
+        val totalSynced = sharedPrefsManager.getTotalSynced()
+        val deathCount = sharedPrefsManager.getServiceDeathCount()
+        val serviceStartTime = sharedPrefsManager.getServiceStartTime()
+        val lastHeartbeat = sharedPrefsManager.getLastHeartbeat()
+        val currentTime = System.currentTimeMillis()
+
+        val uptime = if (serviceStartTime > 0 && lastHeartbeat > 0 && (currentTime - lastHeartbeat) < 60000) {
+            val minutes = (currentTime - serviceStartTime) / 1000 / 60
+            val hours = minutes / 60
+            val days = hours / 24
+            when {
+                days > 0 -> "${days}d ${hours % 24}h"
+                hours > 0 -> "${hours}h ${minutes % 60}m"
+                else -> "${minutes}m"
+            }
+        } else {
+            "N/A"
+        }
+
+        val statsText = """
+            Uptime: $uptime
+            Total Synced: $totalSynced
+            Service Deaths: $deathCount
+            Last Heartbeat: ${if (lastHeartbeat > 0) "${(currentTime - lastHeartbeat) / 1000}s ago" else "Never"}
+        """.trimIndent()
+
+        // Update UI with stats (assuming you have a TextView for stats)
+        // binding.tvStats.text = statsText
+    }
+
+    private fun restartDeadService() {
+        // Kill any zombie process
+        stopService()
+
+        // Wait a bit then restart
+        Handler(Looper.getMainLooper()).postDelayed({
+            startService()
+        }, 1000)
     }
 
     inner class PhoneNumberWatcher(private val textInputLayout: TextInputLayout) : TextWatcher {

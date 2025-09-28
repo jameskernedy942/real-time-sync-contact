@@ -6,6 +6,7 @@ import com.google.gson.JsonSyntaxException
 import com.realtime.synccontact.BuildConfig
 import com.realtime.synccontact.data.ContactManager
 import com.realtime.synccontact.data.LocalRetryQueue
+import com.realtime.synccontact.monitoring.CloudAMQPMonitor
 import com.realtime.synccontact.utils.CrashlyticsLogger
 import com.realtime.synccontact.utils.SharedPrefsManager
 import kotlinx.coroutines.*
@@ -22,6 +23,7 @@ class MessageProcessor(
     private val contactManager = ContactManager(context)
     private val retryQueue = LocalRetryQueue(context)
     private val sharedPrefsManager = SharedPrefsManager(context)
+    private val cloudAMQPMonitor = CloudAMQPMonitor(context)
     private val processingTimes = ConcurrentHashMap<Long, Long>()
     private val totalProcessed = AtomicLong(0)
 
@@ -42,8 +44,11 @@ class MessageProcessor(
         val appVersion: String
     )
 
-    suspend fun processMessage(messageBody: String, connection: ImprovedAMQPConnection): Boolean {
+    suspend fun processMessage(messageBody: String, connection: ThreadSafeAMQPConnection): Boolean {
         val startTime = System.currentTimeMillis()
+
+        // Record message for CloudAMQP monitoring
+        cloudAMQPMonitor.recordMessage()
 
         return try {
             // Parse message
@@ -120,6 +125,8 @@ class MessageProcessor(
                 "JSON parsing failed: ${e.message}",
                 e
             )
+            // Record error for monitoring
+            cloudAMQPMonitor.recordError(e)
             // ACK malformed messages to prevent queue blocking
             true
         } catch (e: Exception) {
@@ -128,6 +135,8 @@ class MessageProcessor(
                 "Processing failed: ${e.message}",
                 e
             )
+            // Record error for monitoring
+            cloudAMQPMonitor.recordError(e)
             false
         } finally {
             val processingTime = System.currentTimeMillis() - startTime
@@ -148,7 +157,7 @@ class MessageProcessor(
         }
     }
 
-    private fun publishSyncSuccess(syncId: Long, connection: ImprovedAMQPConnection) {
+    private fun publishSyncSuccess(syncId: Long, connection: ThreadSafeAMQPConnection) {
         processingScope.launch {
             try {
                 val successMessage = SyncSuccessMessage(
@@ -202,7 +211,7 @@ class MessageProcessor(
         }
     }
 
-    private suspend fun processRetryQueue(connection: ImprovedAMQPConnection) {
+    private suspend fun processRetryQueue(connection: ThreadSafeAMQPConnection) {
         if (!connection.isConnected()) {
             return
         }

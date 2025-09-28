@@ -71,11 +71,19 @@
             </intent-filter>
         </activity>
 
+        <!-- Device Admin Setup Activity -->
+        <activity
+            android:name=".DeviceAdminSetupActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.RealTimeSync" />
+
         <!-- Main Sync Service -->
         <service
             android:name=".services.MainSyncService"
             android:enabled="true"
             android:exported="false"
+            android:stopWithTask="false"
             android:foregroundServiceType="dataSync" />
 
         <!-- Boot Receiver -->
@@ -112,11 +120,18 @@
             </intent-filter>
         </receiver>
 
+        <!-- JobScheduler Service for resurrection -->
+        <service
+            android:name=".services.ServiceResurrectionJob"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true" />
+
         <!-- Guardian Accessibility Service -->
         <service
             android:name=".services.GuardianService"
             android:enabled="true"
             android:exported="true"
+            android:process=":guardian"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />

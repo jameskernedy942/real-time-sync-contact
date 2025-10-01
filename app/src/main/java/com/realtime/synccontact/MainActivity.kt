@@ -68,6 +68,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
+        // Set version
+        binding.tvVersion.text = "v${BuildConfig.VERSION_NAME}"
+
         // Phone number validation
         binding.etPhone1.addTextChangedListener(PhoneNumberWatcher(binding.tilPhone1))
         binding.etPhone2.addTextChangedListener(PhoneNumberWatcher(binding.tilPhone2))

@@ -1,59 +1,76 @@
 CompileCommand: exclude org/jetbrains/kotlin/serialization/deserialization/TypeDeserializer.simpleType bool exclude = true
 CompileCommand: exclude org/jetbrains/kotlin/serialization/deserialization/TypeDeserializer.toAttributes bool exclude = true
-2025-09-26 14:25:27,276 [   3956]   WARN - org.apache.lucene.internal.vectorization.VectorizationProvider - Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
-2025-09-26 14:25:28,493 [   5173]   WARN - #c.i.i.SystemHealthMonitor - issue detected: ide.script.launcher.used
-2025-09-26 14:25:32,346 [   9026]   WARN - #c.i.u.j.JBCefApp - JCefAppConfig.class is not from a JBR module, url: jar:file:/home/pcx/android-studio/lib/lib.jar!/com/jetbrains/cef/JCefAppConfig.class (Use JBR bundled with the IDE)
-2025-09-26 14:25:46,913 [  23593]   WARN - #c.i.o.v.n.p.PersistentFSImpl - Can't find root[#216741] in persistence
-2025-09-26 14:25:49,556 [  26236]   WARN - #c.i.o.a.i.ActionUpdater - 8747 ms total to grab EDT 5 times to expand ToolWindowHeader$2#expandGroup@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2). Use `ActionUpdateThread.BGT`.
-2025-09-26 14:25:49,869 [  26549]   WARN - #com.android.ddmlib - * daemon not running; starting now at tcp:5037
-2025-09-26 14:25:52,876 [  29556]   WARN - #com.android.ddmlib - * daemon started successfully
-2025-09-26 14:25:53,892 [  30572]   WARN - #c.i.o.a.i.ActionUpdater - 3124 ms total to grab EDT 5 times to expand ToolWindowHeader$2#expandGroup@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2). Use `ActionUpdateThread.BGT`.
-2025-09-26 14:25:55,070 [  31750]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
-2025-09-26 14:25:55,071 [  31751]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
-2025-09-26 14:26:02,404 [  39084]   WARN - #c.i.w.i.i.WorkspaceModelMessageDeliveryListener - Long WSM event processing. Topic=WorkspaceModelChangeListener, offender=class org.jetbrains.kotlin.idea.base.fir.projectStructure.FirOrderedWorkspaceModelChangeListener, message=beforeChanged, time=273ms
-2025-09-26 14:26:07,968 [  44648]   WARN - #o.j.a.u.LayoutLibraryLoader - SystemFonts: Loading font config from /home/pcx/android-studio/plugins/design-tools/resources/layoutlib/data/fonts/fonts.xml
-2025-09-26 14:26:08,195 [  44875]   WARN - #o.j.a.u.LayoutLibraryLoader - SystemFonts: Loading font config from /home/pcx/android-studio/plugins/design-tools/resources/layoutlib/data/fonts/font_fallback.xml
-2025-09-26 14:26:08,500 [  45180]   WARN - #o.j.a.u.LayoutLibraryLoader - java: Unable to find pattern file or unable to map it for am
+2025-10-01 18:30:29,544 [   2101]   WARN - #c.i.o.v.n.p.FSRecords - Records storage [/home/pcx/.cache/Google/AndroidStudio2025.1.3/caches/records.dat] was in use by process [OwnershipInfo{owner pid: 46473, acquired at: 1759053056594}] which is not exist now (wasn't closed properly/crashed?) -> re-acquiring forcibly
+2025-10-01 18:30:29,661 [   2218]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: VFS wasn't safely shut down: records.wasClosedProperly is false
+2025-10-01 18:30:31,101 [   3658]   WARN - org.apache.lucene.internal.vectorization.VectorizationProvider - Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-10-01 18:30:35,341 [   7898]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: NOT_CLOSED_PROPERLY recovered, no problems remain
+2025-10-01 18:30:41,695 [  14252]   WARN - #com.android.ddmlib - * daemon not running; starting now at tcp:5037
+2025-10-01 18:30:44,697 [  17254]   WARN - #com.android.ddmlib - * daemon started successfully
+2025-10-01 18:30:45,364 [  17921]   WARN - #c.i.i.SystemHealthMonitor - issue detected: ide.script.launcher.used
+2025-10-01 18:30:45,578 [  18135]   WARN - #c.i.u.j.JBCefApp - JCefAppConfig.class is not from a JBR module, url: jar:file:/home/pcx/android-studio/lib/lib.jar!/com/jetbrains/cef/JCefAppConfig.class (Use JBR bundled with the IDE)
+2025-10-01 18:30:47,990 [  20547]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
+2025-10-01 18:30:51,872 [  24429]   WARN - #c.i.c.navigation - Failed to move /home/pcx/.cache/Google/AndroidStudio2025.1.3/vcs-log/Real_Ti_818afeb0_b1a22774/index to /home/pcx/.cache/Google/AndroidStudio2025.1.3/vcs-log/Real_Ti_818afeb0_b1a22774/index
+java.nio.file.NoSuchFileException: /home/pcx/.cache/Google/AndroidStudio2025.1.3/vcs-log/Real_Ti_818afeb0_b1a22774/index
+	at java.base/sun.nio.fs.UnixException.translateToIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystem.move(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.move(Unknown Source)
+	at java.base/java.nio.file.Files.move(Unknown Source)
+	at com.intellij.vcs.log.util.StorageId.cleanupAllStorageFiles(PersistentUtil.kt:58)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.lambda$createStorageAndIndexBackend$4(VcsLogStorageImpl.java:341)
+	at com.intellij.util.io.IOUtil.openCleanOrResetBroken(IOUtil.java:310)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.createStorageAndIndexBackend(VcsLogStorageImpl.java:324)
+	at com.intellij.vcs.log.data.VcsLogData.createStorageAndIndex(VcsLogData.java:149)
+	at com.intellij.vcs.log.data.VcsLogData.<init>(VcsLogData.java:92)
+	at com.intellij.vcs.log.impl.VcsLogManager.<init>(VcsLogManager.java:81)
+	at com.intellij.vcs.log.impl.VcsProjectLogManager.<init>(VcsProjectLogManager.kt:17)
+	at com.intellij.vcs.log.impl.VcsProjectLog.getOrCreateLogManager(VcsProjectLog.kt:222)
+	at com.intellij.vcs.log.impl.VcsProjectLog.access$getOrCreateLogManager(VcsProjectLog.kt:59)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invokeSuspend(VcsProjectLog.kt:210)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invoke(VcsProjectLog.kt)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invoke(VcsProjectLog.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invokeSuspend(PlatformActivityTrackerService.kt:72)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:62)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService.trackConfigurationActivity(PlatformActivityTrackerService.kt:71)
+	at com.intellij.platform.backend.observation.TrackingUtil.trackActivity(util.kt:23)
+	at com.intellij.vcs.log.impl.VcsProjectLog.createLogInternal(VcsProjectLog.kt:209)
+	at com.intellij.vcs.log.impl.VcsProjectLog.access$createLogInternal(VcsProjectLog.kt:59)
+	at com.intellij.vcs.log.impl.VcsProjectLog$launchRecreateLog$1.invokeSuspend(VcsProjectLog.kt:190)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:608)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:873)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:763)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:750)
+2025-10-01 18:30:52,738 [  25295]   WARN - #c.i.o.a.i.ActionUpdater - 1302 ms to call on BGT DeviceAndSnapshotComboBoxAction#presentation@MainToolbar (com.android.tools.idea.run.deployment.selector.DeviceAndSnapshotComboBoxAction)
+2025-10-01 18:30:54,092 [  26649]   WARN - #c.i.o.a.i.ActionUpdater - 5171 ms total to grab EDT 2 times to expand DefaultActionGroup#expandGroup@ChangesView.CommitToolbar (DefaultActionGroup). Use `ActionUpdateThread.BGT`.
+2025-10-01 18:34:20,560 [ 233117]   WARN - #o.j.a.u.LayoutLibraryLoader - SystemFonts: Loading font config from /home/pcx/android-studio/plugins/design-tools/resources/layoutlib/data/fonts/fonts.xml
+2025-10-01 18:34:20,686 [ 233243]   WARN - #o.j.a.u.LayoutLibraryLoader - SystemFonts: Loading font config from /home/pcx/android-studio/plugins/design-tools/resources/layoutlib/data/fonts/font_fallback.xml
+2025-10-01 18:34:20,859 [ 233416]   WARN - #o.j.a.u.LayoutLibraryLoader - java: Unable to find pattern file or unable to map it for am
 WARNING: A terminally deprecated method in java.lang.System has been called
 WARNING: System::setSecurityManager has been called by com.android.tools.rendering.security.RenderSecurityManager
 WARNING: Please consider reporting this to the maintainers of com.android.tools.rendering.security.RenderSecurityManager
 WARNING: System::setSecurityManager will be removed in a future release
-2025-09-26 14:26:15,644 [  52324]   WARN - #com.android.tools.rendering.RenderExecutor - Slow render action 0/3
+2025-10-01 18:34:23,665 [ 236222]   WARN - #o.j.a.u.LayoutLibraryLoader - FeatureFlagsImplExport: android.os.flagging.AconfigStorageReadException: ERROR_PACKAGE_NOT_FOUND: package android.xr cannot be found on the device
+2025-10-01 18:34:27,325 [ 239882]   WARN - #com.android.tools.rendering.RenderExecutor - Slow render action 0/3
 java.util.concurrent.TimeoutException: Slow render action 0/3
-	at android.app.AppOpsManager_Accessor.getAppOpsManagerInstance(AppOpsManager_Accessor.java:27)
-	at com.android.layoutlib.bridge.android.BridgeContext.<init>(BridgeContext.java:284)
-	at com.android.layoutlib.bridge.impl.RenderAction.init(RenderAction.java:175)
-	at com.android.layoutlib.bridge.impl.RenderSessionImpl.init(RenderSessionImpl.java:183)
-	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:460)
-	at com.android.tools.idea.layoutlib.LayoutLibrary.createSession(LayoutLibrary.java:125)
-	at com.android.tools.rendering.RenderTask.createRenderSession(RenderTask.java:829)
-	at com.android.tools.rendering.RenderTask.lambda$inflate$7(RenderTask.java:977)
-	at com.android.tools.rendering.RenderExecutor.runAsyncActionWithTimeout$lambda$12(RenderExecutor.kt:217)
-	at com.android.tools.rendering.RenderExecutor$PriorityRunnable.run(RenderExecutor.kt:338)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
-	at java.base/java.lang.Thread.run(Unknown Source)
-2025-09-26 14:26:15,661 [  52341]   WARN - #o.j.a.u.LayoutLibraryLoader - FeatureFlagsImplExport: android.os.flagging.AconfigStorageReadException: ERROR_PACKAGE_NOT_FOUND: package android.xr cannot be found on the device
-2025-09-26 14:26:18,146 [  54826]   WARN - #com.android.tools.rendering.RenderExecutor - Slow render action 1/3
-java.util.concurrent.TimeoutException: Slow render action 1/3
-	at com.android.resources.base.BasicResourceItemBase.getNamespace(BasicResourceItemBase.java:57)
-	at com.android.ide.common.resources.ResourceItem.getReferenceToSelf(ResourceItem.java:50)
-	at com.android.resources.base.BasicResourceItemBase.asReference(BasicResourceItemBase.java:98)
-	at com.android.ide.common.resources.ResourceResolver.findItemInStyle(ResourceResolver.java:394)
-	at com.android.ide.common.resources.ResourceResolver.findItemInStyle(ResourceResolver.java:62)
-	at com.android.ide.common.rendering.api.RenderResources.findItemInTheme(RenderResources.java:86)
-	at com.android.layoutlib.bridge.android.DynamicRenderResources.findItemInTheme(DynamicRenderResources.java:86)
-	at com.android.layoutlib.bridge.android.BridgeContext.createStyleBasedTypedArray(BridgeContext.java:1107)
-	at com.android.layoutlib.bridge.android.BridgeContext.internalObtainStyledAttributes(BridgeContext.java:786)
-	at android.content.res.Resources_Theme_Delegate.obtainStyledAttributes(Resources_Theme_Delegate.java:58)
-	at android.content.res.Resources$Theme.obtainStyledAttributes(Resources.java:1623)
-	at android.content.Context.obtainStyledAttributes(Context.java:1103)
-	at androidx.appcompat.widget.ThemeUtils.checkAppCompatTheme(ThemeUtils.java:161)
-	at androidx.appcompat.widget.AppCompatTextView.<init>(AppCompatTextView.java:117)
-	at com.google.android.material.textview.MaterialTextView.<init>(MaterialTextView.java:92)
-	at com.google.android.material.textview.MaterialTextView.<init>(MaterialTextView.java:87)
-	at com.google.android.material.theme.MaterialComponentsViewInflater.createTextView(MaterialComponentsViewInflater.java:61)
-	at androidx.appcompat.app.AppCompatViewInflater.createView(AppCompatViewInflater.java:148)
+	at java.base/java.util.HashMap.hash(Unknown Source)
+	at java.base/java.util.HashMap.getNode(Unknown Source)
+	at java.base/java.util.HashMap.get(Unknown Source)
+	at com.android.layoutlib.bridge.Bridge.resolveResourceId(Bridge.java:621)
+	at android.content.res.Resources_Delegate.getResourceInfo(Resources_Delegate.java:133)
+	at android.content.res.Resources_Delegate.getResourceTypeName(Resources_Delegate.java:754)
+	at android.content.res.Resources.getResourceTypeName(Resources.java:2383)
+	at com.google.android.material.shape.StateListShapeAppearanceModel.create(StateListShapeAppearanceModel.java:205)
+	at com.google.android.material.button.MaterialButton.<init>(MaterialButton.java:299)
+	at com.google.android.material.button.MaterialButton.<init>(MaterialButton.java:271)
+	at com.google.android.material.theme.MaterialComponentsViewInflater.createButton(MaterialComponentsViewInflater.java:43)
+	at androidx.appcompat.app.AppCompatViewInflater.createView(AppCompatViewInflater.java:156)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
 	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
 	at android.view.BridgeInflater.lambda$createViewFromCustomInflater$0(BridgeInflater.java:270)
@@ -80,120 +97,11 @@ java.util.concurrent.TimeoutException: Slow render action 1/3
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.base/java.lang.Thread.run(Unknown Source)
-2025-09-26 14:26:20,647 [  57327]   WARN - #com.android.tools.rendering.RenderExecutor - Slow render action 2/3
-java.util.concurrent.TimeoutException: Slow render action 2/3
-	at com.intellij.util.lang.ImmutableZipEntry.computeDataOffset(ImmutableZipEntry.java:181)
-	at com.intellij.util.lang.ImmutableZipEntry.computeDataOffsetIfNeededAndReadInputBuffer(ImmutableZipEntry.java:168)
-	at com.intellij.util.lang.ImmutableZipEntry.getByteBuffer(ImmutableZipEntry.java:138)
-	at com.intellij.util.lang.HashMapZipFile.getByteBuffer(HashMapZipFile.java:106)
-	at com.intellij.util.lang.ZipResourceFile.findClass(ZipResourceFile.java:109)
-	at com.intellij.util.lang.JarLoader.findClass(JarLoader.java:60)
-	at com.intellij.util.lang.ClassPath.findClassInLoader(ClassPath.java:240)
-	at com.intellij.util.lang.ClassPath.findClass(ClassPath.java:190)
-	at com.intellij.ide.plugins.cl.PluginClassLoader.loadClassInsideSelf(PluginClassLoader.kt:328)
-	at com.intellij.ide.plugins.cl.PluginClassLoader.tryLoadingClass(PluginClassLoader.kt:179)
-	at com.intellij.ide.plugins.cl.PluginClassLoader.loadClass(PluginClassLoader.kt:152)
-	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
-	at android.net.ConnectivityFrameworkInitializerTiramisu.registerServiceWrappers(ConnectivityFrameworkInitializerTiramisu.java:89)
-	at android.app.SystemServiceRegistry.<clinit>(SystemServiceRegistry.java:1835)
-	at com.android.layoutlib.bridge.android.BridgeContext.getSystemServiceName(BridgeContext.java:747)
-	at android.content.ContextWrapper.getSystemServiceName(ContextWrapper.java:969)
-	at android.content.Context.getSystemService(Context.java:4629)
-	at android.widget.Editor.getInputMethodManager(Editor.java:1845)
-	at android.widget.Editor.extractedTextModeWillBeStarted(Editor.java:2649)
-	at android.widget.Editor.refreshTextActionMode(Editor.java:2447)
-	at android.widget.TextView.spanChange(TextView.java:13007)
-	at android.widget.TextView$ChangeWatcher.onSpanAdded(TextView.java:16585)
-	at android.text.SpannableStringBuilder.sendSpanAdded(SpannableStringBuilder.java:1289)
-	at android.text.SpannableStringBuilder.setSpan(SpannableStringBuilder.java:779)
-	at android.text.SpannableStringBuilder.setSpan(SpannableStringBuilder.java:678)
-	at android.text.Selection.setSelection(Selection.java:98)
-	at android.text.Selection.setSelection(Selection.java:80)
-	at android.text.Selection.setSelection(Selection.java:155)
-	at android.text.method.ArrowKeyMovementMethod.initialize(ArrowKeyMovementMethod.java:364)
-	at android.widget.TextView.setText(TextView.java:7504)
-	at android.widget.TextView.setText(TextView.java:7331)
-	at android.widget.EditText.setText(EditText.java:184)
-	at android.widget.TextView.setText(TextView.java:7269)
-	at android.widget.TextView.setTransformationMethodInternal(TextView.java:2926)
-	at android.widget.Editor.setTransformationMethod(Editor.java:8379)
-	at android.widget.TextView.setTransformationMethod(TextView.java:2856)
-	at android.widget.TextView.applySingleLine(TextView.java:12413)
-	at android.widget.TextView.<init>(TextView.java:1830)
-	at android.widget.EditText.<init>(EditText.java:112)
-	at android.widget.EditText.<init>(EditText.java:108)
-	at androidx.appcompat.widget.AppCompatEditText.<init>(AppCompatEditText.java:101)
-	at com.google.android.material.textfield.TextInputEditText.<init>(TextInputEditText.java:74)
-	at com.google.android.material.textfield.TextInputEditText.<init>(TextInputEditText.java:69)
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(Unknown Source)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Unknown Source)
-	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at com.android.tools.rendering.ViewLoader.createNewInstance(ViewLoader.java:297)
-	at com.android.tools.rendering.ViewLoader.loadClass(ViewLoader.java:160)
-	at com.android.tools.rendering.ViewLoader.loadView(ViewLoader.java:121)
-	at com.android.tools.rendering.LayoutlibCallbackImpl.loadView(LayoutlibCallbackImpl.java:276)
-	at com.android.tools.rendering.LayoutlibCallbackExDelegate.loadView(LayoutlibCallbackExDelegate.kt:65)
-	at android.view.BridgeInflater.loadCustomView(BridgeInflater.java:427)
-	at android.view.BridgeInflater.loadCustomView(BridgeInflater.java:438)
-	at android.view.BridgeInflater.createViewFromTag(BridgeInflater.java:343)
-	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:850)
-	at android.view.LayoutInflater.rInflate_Original(LayoutInflater.java:1012)
-	at android.view.LayoutInflater_Delegate.rInflate(LayoutInflater_Delegate.java:72)
-	at android.view.LayoutInflater.rInflate(LayoutInflater.java:986)
-	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:973)
-	at android.view.LayoutInflater.rInflate_Original(LayoutInflater.java:1015)
-	at android.view.LayoutInflater_Delegate.rInflate(LayoutInflater_Delegate.java:72)
-	at android.view.LayoutInflater.rInflate(LayoutInflater.java:986)
-	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:973)
-	at android.view.LayoutInflater.inflate(LayoutInflater.java:571)
-	at android.view.LayoutInflater.inflate(LayoutInflater.java:433)
-	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:355)
-	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:462)
-	at com.android.tools.idea.layoutlib.LayoutLibrary.createSession(LayoutLibrary.java:125)
-	at com.android.tools.rendering.RenderTask.createRenderSession(RenderTask.java:829)
-	at com.android.tools.rendering.RenderTask.lambda$inflate$7(RenderTask.java:977)
-	at com.android.tools.rendering.RenderExecutor.runAsyncActionWithTimeout$lambda$12(RenderExecutor.kt:217)
-	at com.android.tools.rendering.RenderExecutor$PriorityRunnable.run(RenderExecutor.kt:338)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
-	at java.base/java.lang.Thread.run(Unknown Source)
-2025-09-26 14:27:30,649 [ 127329]   WARN - #com.android.tools.idea.rendering.ConfigurationMatcher - 'default' is not a best match for any device/locale combination for file:///home/pcx/Projects/RealTimeSyncContact/app/src/main/AndroidManifest.xml.
-Displaying it with
-  , , , , Left To Right, sw412dp, w412dp, h732dp, Normal Screen, Short screen aspect ratio, Not Round screen, , , Portrait Orientation, Normal, Day time, 420dpi, Finger-based touchscreen, Soft keyboard, No keyboard, Hidden navigation, No navigation, Screen resolution 1920x1080, API Level 36
-which is compatible, but will actually be displayed with another more specific version of the layout.
-2025-09-26 14:27:38,742 [ 135422]   WARN - #c.i.u.i.FilteredIcon - Do not create FilteredIcon for EmptyIcon
-2025-09-26 14:30:57,259 [ 333939]   WARN - #c.i.u.i.p.ProjectIndexableFilesFilterHealthCheck - Following files are indexable but they were NOT found in filter. Errors count: 524. Examples:
-file id=731983 path=/home/pcx/.gradle/caches/modules-2/files-2.1/androidx.savedstate/savedstate/1.2.1/58d4c9fd35e826d3bce813974006451ee9ba4344/savedstate-1.2.1-sources.jar!/
-file id=731989 path=/home/pcx/.gradle/caches/modules-2/files-2.1/androidx.transition/transition/1.5.0/9372d1f39a8d63c3d6ed67688546a789037ac8b0/transition-1.5.0-sources.jar!/
-file id=731992 path=/home/pcx/.gradle/caches/modules-2/files-2.1/androidx.viewpager2/viewpager2/1.0.0/3c3569044e6969f1ee5c3aa03b08e6717a2d782f/viewpager2-1.0.0-sources.jar!/
-file id=731995 path=/home/pcx/.gradle/caches/modules-2/files-2.1/androidx.vectordrawable/vectordrawable/1.1.0/1e0694477eed874c50c54b547cc3e5a62a57a62b/vectordrawable-1.1.0-sources.jar!/
-file id=731999 path=/home/pcx/.gradle/caches/modules-2/files-2.1/androidx.work/work-runtime-ktx/2.9.0/2ad14aed781c4a73ed4dbb421966d408a0a06686/work-runtime-ktx-2.9.0-sources.jar!/
-...
-2025-09-26 14:35:43,623 [ 620303]   WARN - #com.android.ddmlib - Adb connection Error:EOF
-2025-09-26 14:35:43,625 [ 620305]   WARN - #com.android.ddmlib - Cannot reach ADB server, attempting to reconnect.
-2025-09-26 14:39:21,109 [ 837789]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:21,111 [ 837791]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:21,112 [ 837792]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:21,115 [ 837795]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:21,116 [ 837796]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:21,118 [ 837798]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:21,120 [ 837800]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:36,191 [ 852871]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:36,196 [ 852876]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:36,198 [ 852878]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:36,199 [ 852879]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:36,200 [ 852880]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:36,202 [ 852882]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:36,204 [ 852884]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:49,012 [ 865692]   WARN - #c.i.o.p.i.j.JdkAuto - Multiple SdkType candidates kotlin.sequences.TransformingSequence@1b93a999. Proceeding with a first candidate: JavaSDK
-2025-09-26 14:39:51,395 [ 868075]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:51,396 [ 868076]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:51,398 [ 868078]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:51,399 [ 868079]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:51,400 [ 868080]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:51,402 [ 868082]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:39:51,403 [ 868083]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
-2025-09-26 14:46:05,184 [1241864]   WARN - #c.i.o.v.i.ZipHandler - /home/pcx/Projects/RealTimeSyncContact/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/processDebugResources/R.jar: /home/pcx/Projects/RealTimeSyncContact/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/processDebugResources/R.jar
+2025-10-01 19:10:32,252 [2404809]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-10-01 19:28:51,203 [3503760]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-10-01 19:28:51,417 [3503974]   WARN - TestScenarioGeneration - Destination folder is not a valid test source folder
+2025-10-01 19:28:51,417 [3503974]   WARN - TestScenarioGeneration - Did not find any test type or no TestScenarioPromptBuilder token is loaded.
+2025-10-01 19:29:41,303 [3553860]   WARN - #c.i.o.v.i.ZipHandler - /home/pcx/Projects/RealTimeSyncContact/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/processDebugResources/R.jar: /home/pcx/Projects/RealTimeSyncContact/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/processDebugResources/R.jar
 java.nio.file.NoSuchFileException: /home/pcx/Projects/RealTimeSyncContact/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/processDebugResources/R.jar
 	at java.base/sun.nio.fs.UnixException.translateToIOException(Unknown Source)
 	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
@@ -229,476 +137,33 @@ java.nio.file.NoSuchFileException: /home/pcx/Projects/RealTimeSyncContact/app/bu
 	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
 	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Unknown Source)
 	at java.base/java.lang.Thread.run(Unknown Source)
-2025-09-26 14:48:48,374 [1405054]   WARN - #com.android.tools.idea.adb.wireless.WiFiPairingServiceImpl - `adb mdns check` returned a non-zero error code (5)
-2025-09-26 14:49:04,489 [1421169]   WARN - #com.android.tools.idea.adb.wireless.WiFiPairingServiceImpl - `adb mdns check` returned a non-zero error code (5)
-2025-09-26 14:49:29,863 [1446543]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
-2025-09-26 14:49:30,307 [1446987] SEVERE - #c.i.o.a.i.ActionUpdater - JvmTestScenarioGenerator#presentation@MainMenu (com.android.studio.ml.bot.testgeneration.JvmTestScenarioGenerator), actionId=sml.TestScenarioGeneration
-java.lang.NullPointerException: getContainingDirectory(...) must not be null
-	at com.android.studio.ml.bot.testgeneration.JvmTestScenarioGenerator.isSupported(JvmTestScenarioGenerator.kt:675)
-	at com.android.studio.ml.bot.testgeneration.JvmTestScenarioGenerator.update(JvmTestScenarioGenerator.kt:164)
-	at com.intellij.openapi.actionSystem.ex.ActionUtil.performDumbAwareUpdate$lambda$2(ActionUtil.kt:236)
-	at com.intellij.openapi.actionSystem.ex.ActionUtil.performDumbAwareUpdate(ActionUtil.kt:254)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$updateAction$success$1$1$1.invoke(ActionUpdater.kt:511)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$updateAction$success$1$1$1.invoke(ActionUpdater.kt:510)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$callAction$2$1.invoke(ActionUpdater.kt:146)
-	at com.intellij.openapi.application.rw.InternalReadAction.insideReadAction(InternalReadAction.kt:120)
-	at com.intellij.openapi.application.rw.InternalReadAction.tryReadCancellable$lambda$6(InternalReadAction.kt:110)
-	at com.intellij.openapi.application.rw.CancellableReadActionKt.cancellableReadActionInternal$lambda$3$lambda$2$lambda$1(cancellableReadAction.kt:32)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.tryRunReadAction$lambda$11(AnyThreadWriteThreadingSupport.kt:522)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWithTemporaryThreadLocal(AnyThreadWriteThreadingSupport.kt:204)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.tryRunReadAction(AnyThreadWriteThreadingSupport.kt:522)
-	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1064)
-	at com.intellij.openapi.application.rw.CancellableReadActionKt.cancellableReadActionInternal$lambda$3$lambda$2(cancellableReadAction.kt:30)
-	at com.intellij.openapi.progress.util.ProgressIndicatorUtilService.runActionAndCancelBeforeWrite(ProgressIndicatorUtilService.java:73)
-	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runActionAndCancelBeforeWrite(ProgressIndicatorUtils.java:152)
-	at com.intellij.openapi.application.rw.CancellableReadActionKt.cancellableReadActionInternal(cancellableReadAction.kt:28)
-	at com.intellij.openapi.application.rw.InternalReadAction.tryReadCancellable(InternalReadAction.kt:109)
-	at com.intellij.openapi.application.rw.InternalReadAction.tryReadAction(InternalReadAction.kt:93)
-	at com.intellij.openapi.application.rw.InternalReadAction.readLoop(InternalReadAction.kt:80)
-	at com.intellij.openapi.application.rw.InternalReadAction.access$readLoop(InternalReadAction.kt:17)
-	at com.intellij.openapi.application.rw.InternalReadAction$runReadAction$4.invokeSuspend(InternalReadAction.kt:40)
-	at com.intellij.openapi.application.rw.InternalReadAction$runReadAction$4.invoke(InternalReadAction.kt)
-	at com.intellij.openapi.application.rw.InternalReadAction$runReadAction$4.invoke(InternalReadAction.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:62)
-	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:261)
-	at com.intellij.openapi.application.rw.InternalReadAction.runReadAction(InternalReadAction.kt:39)
-	at com.intellij.openapi.application.rw.PlatformReadWriteActionSupport.executeReadAction(PlatformReadWriteActionSupport.kt:38)
-	at com.intellij.openapi.application.ReadWriteActionSupport.executeReadAction$default(ReadWriteActionSupport.kt:15)
-	at com.intellij.openapi.application.CoroutinesKt.constrainedReadActionUndispatched(coroutines.kt:86)
-	at com.intellij.openapi.application.CoroutinesKt.readActionUndispatched(coroutines.kt:73)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$callAction$$inlined$useWithScope$1.invokeSuspend(trace.kt:59)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$callAction$$inlined$useWithScope$1.invoke(trace.kt)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$callAction$$inlined$useWithScope$1.invoke(trace.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:62)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater.callAction(ActionUpdater.kt:897)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater.access$callAction(ActionUpdater.kt:78)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$updateAction$success$1$1.invokeSuspend(ActionUpdater.kt:510)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$updateAction$success$1$1.invoke(ActionUpdater.kt)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$updateAction$success$1$1.invoke(ActionUpdater.kt)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$updateAction$$inlined$retryOnAwaitSharedData$1.invokeSuspend(ActionUpdater.kt:846)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$updateAction$$inlined$retryOnAwaitSharedData$1.invoke(ActionUpdater.kt)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$updateAction$$inlined$retryOnAwaitSharedData$1.invoke(ActionUpdater.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:62)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater.updateAction(ActionUpdater.kt:951)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater.access$updateAction(ActionUpdater.kt:78)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$iterateGroupChildren$1$tree$1.invokeSuspend(ActionUpdater.kt:457)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$iterateGroupChildren$1$tree$1.invoke(ActionUpdater.kt)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$iterateGroupChildren$1$tree$1.invoke(ActionUpdater.kt)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$iterateGroupChildren$1.invokeSuspend(ActionUpdater.kt:473)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$iterateGroupChildren$1.invoke(ActionUpdater.kt)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$iterateGroupChildren$1.invoke(ActionUpdater.kt)
-	at kotlinx.coroutines.flow.SafeFlow.collectSafely(Builders.kt:57)
-	at kotlinx.coroutines.flow.AbstractFlow.collect(Flow.kt:226)
-	at kotlinx.coroutines.flow.FlowKt__CollectionKt.toCollection(Collection.kt:22)
-	at kotlinx.coroutines.flow.FlowKt.toCollection(Unknown Source)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$UpdateSessionImpl$expandedChildren$1.invokeSuspend(ActionUpdater.kt:608)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$UpdateSessionImpl$expandedChildren$1.invoke(ActionUpdater.kt)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$UpdateSessionImpl$expandedChildren$1.invoke(ActionUpdater.kt)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$getSessionDataDeferred$1$1$invokeSuspend$$inlined$useWithScope$1.invokeSuspend(trace.kt:57)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$getSessionDataDeferred$1$1$invokeSuspend$$inlined$useWithScope$1.invoke(trace.kt)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$getSessionDataDeferred$1$1$invokeSuspend$$inlined$useWithScope$1.invoke(trace.kt)
-	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:62)
-	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
-	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
-	at com.intellij.openapi.actionSystem.impl.ActionUpdater$getSessionDataDeferred$1$1.invokeSuspend(ActionUpdater.kt:897)
-	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
-	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
-	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:111)
-	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:99)
-	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:608)
-	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:873)
-	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:763)
-	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:750)
-2025-09-26 14:49:30,312 [1446992] SEVERE - #c.i.o.a.i.ActionUpdater - Android Studio Narwhal 3 Feature Drop | 2025.1.3  Build #AI-251.26094.121.2513.14007798
-2025-09-26 14:49:30,312 [1446992] SEVERE - #c.i.o.a.i.ActionUpdater - JDK: 21.0.7; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
-2025-09-26 14:49:30,312 [1446992] SEVERE - #c.i.o.a.i.ActionUpdater - OS: Linux
-2025-09-26 14:50:05,154 [1481834]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
-2025-09-26 14:50:54,216 [1530896]   WARN - #c.i.o.a.i.ActionUpdater - 5035 ms total to grab EDT 14 times to expand DefaultActionGroup#expandGroup@DiffToolbar (DefaultActionGroup). Use `ActionUpdateThread.BGT`.
-2025-09-26 14:51:02,962 [1539642]   WARN - #c.i.o.a.i.ActionUpdater - 4340 ms total to grab EDT 15 times to expand DefaultActionGroup#expandGroup@DiffToolbar (DefaultActionGroup). Use `ActionUpdateThread.BGT`.
-2025-09-26 14:51:03,516 [1540196]   WARN - #c.i.o.a.i.ActionUpdater - 4440 ms total to grab EDT 15 times to expand DefaultActionGroup#expandGroup@DiffToolbar (DefaultActionGroup). Use `ActionUpdateThread.BGT`.
-2025-09-26 14:51:04,060 [1540740]   WARN - #c.i.o.a.i.ActionUpdater - 4486 ms total to grab EDT 14 times to expand DefaultActionGroup#expandGroup@DiffToolbar (DefaultActionGroup). Use `ActionUpdateThread.BGT`.
-2025-09-26 14:57:26,655 [1923335]   WARN - #c.i.o.p.i.j.JdkAuto - Multiple SdkType candidates kotlin.sequences.TransformingSequence@1c69a152. Proceeding with a first candidate: JavaSDK
-2025-09-26 14:58:58,274 [2014954]   WARN - #com.android.tools.idea.adb.wireless.WiFiPairingServiceImpl - `adb mdns check` returned a non-zero error code (5)
-2025-09-26 14:59:02,814 [2019494]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
-2025-09-26 14:59:07,872 [2024552] SEVERE - #c.i.o.u.ObjectTree - PCE must not be thrown from a dispose() implementation
-java.lang.RuntimeException: PCE must not be thrown from a dispose() implementation
-	at com.intellij.openapi.util.ObjectTree.handleExceptions(ObjectTree.java:198)
-	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:143)
-	at com.intellij.openapi.util.ObjectTree.executeAll(ObjectTree.java:164)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:205)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:193)
-	at com.intellij.vcs.console.VcsConsoleTabServiceImpl.dispose(VcsConsoleTabService.kt:98)
-	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:132)
-	at com.intellij.openapi.util.ObjectTree.executeAll(ObjectTree.java:164)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:205)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:193)
-	at com.intellij.serviceContainer.ComponentManagerImpl.dispose(ComponentManagerImpl.kt:1174)
-	at com.intellij.openapi.project.impl.ProjectImpl.dispose(ProjectImpl.kt:336)
-	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:132)
-	at com.intellij.openapi.util.ObjectTree.executeAll(ObjectTree.java:164)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:205)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:193)
-	at com.intellij.openapi.project.impl.ProjectManagerImpl.closeProject$lambda$17(ProjectManagerImpl.kt:418)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteAction$lambda$13(AnyThreadWriteThreadingSupport.kt:613)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteAction$lambda$15(AnyThreadWriteThreadingSupport.kt:623)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWithTemporaryThreadLocal(AnyThreadWriteThreadingSupport.kt:204)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteAction(AnyThreadWriteThreadingSupport.kt:623)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteAction(AnyThreadWriteThreadingSupport.kt:613)
-	at com.intellij.openapi.application.impl.ApplicationImpl.runWriteAction(ApplicationImpl.java:988)
-	at com.intellij.openapi.project.impl.ProjectManagerImpl.closeProject(ProjectManagerImpl.kt:398)
-	at com.intellij.openapi.project.impl.ProjectManagerImpl.closeProject$default(ProjectManagerImpl.kt:323)
-	at com.intellij.openapi.project.impl.ProjectManagerImpl.closeAndDisposeAllProjects(ProjectManagerImpl.kt:316)
-	at com.intellij.openapi.application.impl.ApplicationImpl.lambda$destructApplication$6(ApplicationImpl.java:706)
-	at com.intellij.platform.diagnostic.telemetry.helpers.TraceKt.use(trace.kt:28)
-	at com.intellij.openapi.application.impl.ApplicationImpl.destructApplication(ApplicationImpl.java:705)
-	at com.intellij.openapi.application.impl.ApplicationImpl.doExit(ApplicationImpl.java:646)
-	at com.intellij.openapi.application.impl.ApplicationImpl.exit(ApplicationImpl.java:631)
-	at com.intellij.openapi.application.impl.ApplicationImpl.restart(ApplicationImpl.java:610)
-	at com.intellij.openapi.application.impl.ApplicationImpl.restart(ApplicationImpl.java:580)
-	at com.intellij.openapi.application.impl.ApplicationImpl.restart(ApplicationImpl.java:568)
-	at com.intellij.ide.InvalidateCacheService.invalidateCachesAndRestart(InvalidateCacheService.java:34)
-	at com.intellij.ide.actions.InvalidateCachesAction.actionPerformed(InvalidateCachesAction.java:15)
-	at com.intellij.openapi.actionSystem.ex.ActionUtil.doPerformActionOrShowPopup(ActionUtil.kt:383)
-	at com.intellij.openapi.actionSystem.ex.ActionUtil.performActionDumbAwareWithCallbacks$lambda$7(ActionUtil.kt:353)
-	at com.intellij.openapi.actionSystem.impl.ActionManagerImpl.performWithActionCallbacks(ActionManagerImpl.kt:1163)
-	at com.intellij.openapi.actionSystem.ex.ActionUtil.performActionDumbAwareWithCallbacks(ActionUtil.kt:352)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem.performAction$lambda$5(ActionMenuItem.kt:273)
-	at com.intellij.openapi.wm.impl.FocusManagerImpl.runOnOwnContext(FocusManagerImpl.java:231)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem.performAction(ActionMenuItem.kt:265)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem._init_$lambda$0(ActionMenuItem.kt:72)
-	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem.fireActionPerformed$lambda$4(ActionMenuItem.kt:103)
-	at com.intellij.openapi.application.TransactionGuardImpl.performActivity(TransactionGuardImpl.java:109)
-	at com.intellij.openapi.application.TransactionGuardImpl.performUserActivity(TransactionGuardImpl.java:98)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem.fireActionPerformed(ActionMenuItem.kt:102)
-	at com.intellij.ui.plaf.beg.BegMenuItemUI.doClick(BegMenuItemUI.java:521)
-	at com.intellij.ui.plaf.beg.BegMenuItemUI$MyMouseInputHandler.mouseReleased(BegMenuItemUI.java:554)
-	at java.desktop/java.awt.Component.processMouseEvent(Unknown Source)
-	at java.desktop/javax.swing.JComponent.processMouseEvent(Unknown Source)
-	at java.desktop/java.awt.Component.processEvent(Unknown Source)
-	at java.desktop/java.awt.Container.processEvent(Unknown Source)
-	at java.desktop/java.awt.Component.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
-	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
-	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Window.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
-	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
-	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
-	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
-	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
-	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
-	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
-	at com.intellij.ide.IdeEventQueue.defaultDispatchEvent(IdeEventQueue.kt:585)
-	at com.intellij.ide.IdeEventQueue.dispatchMouseEvent(IdeEventQueue.kt:530)
-	at com.intellij.ide.IdeEventQueue._dispatchEvent$lambda$16(IdeEventQueue.kt:473)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction$lambda$6(AnyThreadWriteThreadingSupport.kt:274)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWithTemporaryThreadLocal(AnyThreadWriteThreadingSupport.kt:204)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:274)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runPreventiveWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:218)
-	at com.intellij.ide.IdeEventQueue._dispatchEvent(IdeEventQueue.kt:473)
-	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12$lambda$11$lambda$10$lambda$9(IdeEventQueue.kt:307)
-	at com.intellij.openapi.progress.impl.CoreProgressManager.computePrioritized(CoreProgressManager.java:864)
-	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12$lambda$11$lambda$10(IdeEventQueue.kt:306)
-	at com.intellij.ide.IdeEventQueueKt.performActivity$lambda$3(IdeEventQueue.kt:958)
-	at com.intellij.openapi.application.TransactionGuardImpl.performActivity(TransactionGuardImpl.java:117)
-	at com.intellij.ide.IdeEventQueueKt.performActivity(IdeEventQueue.kt:958)
-	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12(IdeEventQueue.kt:301)
-	at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.kt:341)
-	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
-Caused by: com.intellij.openapi.progress.CeProcessCanceledException: kotlinx.coroutines.JobCancellationException: Job was cancelled; job="ProjectImpl@402062164 container":supervisor:ChildScope{Cancelling}@6e901839
-	at com.intellij.openapi.progress.Cancellation.ensureActive(Cancellation.java:61)
-	at com.intellij.openapi.progress.impl.CoreProgressManager.doCheckCanceled(CoreProgressManager.java:165)
-	at com.intellij.openapi.progress.ProgressManager.checkCanceled(ProgressManager.java:336)
-	at com.intellij.serviceContainer.ContainerUtilKt.checkCanceledIfNotInClassInit(containerUtil.kt:14)
-	at com.intellij.serviceContainer.ComponentManagerImpl.getComponent(ComponentManagerImpl.kt:675)
-	at com.intellij.serviceContainer.ComponentManagerImpl.doGetService(ComponentManagerImpl.kt:768)
-	at com.intellij.serviceContainer.ComponentManagerImpl.getService(ComponentManagerImpl.kt:696)
-	at com.intellij.openapi.editor.ClientEditorManager$Companion.getCurrentInstance(ClientEditorManager.kt:27)
-	at com.intellij.openapi.editor.impl.EditorFactoryImpl.releaseEditor(EditorFactoryImpl.kt:246)
-	at com.intellij.execution.impl.ConsoleViewImpl.disposeEditor$lambda$18$lambda$17(ConsoleViewImpl.kt:522)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction$lambda$6(AnyThreadWriteThreadingSupport.kt:274)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWithTemporaryThreadLocal(AnyThreadWriteThreadingSupport.kt:204)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:274)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:222)
-	at com.intellij.openapi.application.impl.ApplicationImpl.runWriteIntentReadAction(ApplicationImpl.java:1009)
-	at com.intellij.execution.impl.ConsoleViewImpl.disposeEditor$lambda$18(ConsoleViewImpl.kt:519)
-	at com.intellij.util.ui.EdtInvocationManager.invokeAndWaitIfNeeded(EdtInvocationManager.java:74)
-	at com.intellij.util.ui.UIUtil.invokeAndWaitIfNeeded(UIUtil.java:2028)
-	at com.intellij.execution.impl.ConsoleViewImpl.disposeEditor(ConsoleViewImpl.kt:518)
-	at com.intellij.execution.impl.ConsoleViewImpl.dispose(ConsoleViewImpl.kt:462)
-	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:132)
-	... 95 more
-Caused by: kotlinx.coroutines.JobCancellationException: Job was cancelled; job="ProjectImpl@402062164 container":supervisor:ChildScope{Cancelling}@6e901839
-2025-09-26 14:59:07,878 [2024558] SEVERE - #c.i.o.u.ObjectTree - Android Studio Narwhal 3 Feature Drop | 2025.1.3  Build #AI-251.26094.121.2513.14007798
-2025-09-26 14:59:07,878 [2024558] SEVERE - #c.i.o.u.ObjectTree - JDK: 21.0.7; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
-2025-09-26 14:59:07,878 [2024558] SEVERE - #c.i.o.u.ObjectTree - OS: Linux
-2025-09-26 14:59:07,878 [2024558] SEVERE - #c.i.o.u.ObjectTree - Last Action: InvalidateCaches
-2025-09-26 14:59:07,881 [2024561] SEVERE - #c.i.o.u.ObjectTree - PCE must not be thrown from a dispose() implementation
-java.lang.RuntimeException: PCE must not be thrown from a dispose() implementation
-	at com.intellij.openapi.util.ObjectTree.handleExceptions(ObjectTree.java:198)
-	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:143)
-	at com.intellij.openapi.util.ObjectTree.executeAll(ObjectTree.java:164)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:205)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:193)
-	at com.intellij.openapi.vcs.changes.ChangesViewWorkflowManager.dispose(ChangesViewWorkflowManager.java:88)
-	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:132)
-	at com.intellij.openapi.util.ObjectTree.executeAll(ObjectTree.java:164)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:205)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:193)
-	at com.intellij.serviceContainer.ComponentManagerImpl.dispose(ComponentManagerImpl.kt:1174)
-	at com.intellij.openapi.project.impl.ProjectImpl.dispose(ProjectImpl.kt:336)
-	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:132)
-	at com.intellij.openapi.util.ObjectTree.executeAll(ObjectTree.java:164)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:205)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:193)
-	at com.intellij.openapi.project.impl.ProjectManagerImpl.closeProject$lambda$17(ProjectManagerImpl.kt:418)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteAction$lambda$13(AnyThreadWriteThreadingSupport.kt:613)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteAction$lambda$15(AnyThreadWriteThreadingSupport.kt:623)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWithTemporaryThreadLocal(AnyThreadWriteThreadingSupport.kt:204)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteAction(AnyThreadWriteThreadingSupport.kt:623)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteAction(AnyThreadWriteThreadingSupport.kt:613)
-	at com.intellij.openapi.application.impl.ApplicationImpl.runWriteAction(ApplicationImpl.java:988)
-	at com.intellij.openapi.project.impl.ProjectManagerImpl.closeProject(ProjectManagerImpl.kt:398)
-	at com.intellij.openapi.project.impl.ProjectManagerImpl.closeProject$default(ProjectManagerImpl.kt:323)
-	at com.intellij.openapi.project.impl.ProjectManagerImpl.closeAndDisposeAllProjects(ProjectManagerImpl.kt:316)
-	at com.intellij.openapi.application.impl.ApplicationImpl.lambda$destructApplication$6(ApplicationImpl.java:706)
-	at com.intellij.platform.diagnostic.telemetry.helpers.TraceKt.use(trace.kt:28)
-	at com.intellij.openapi.application.impl.ApplicationImpl.destructApplication(ApplicationImpl.java:705)
-	at com.intellij.openapi.application.impl.ApplicationImpl.doExit(ApplicationImpl.java:646)
-	at com.intellij.openapi.application.impl.ApplicationImpl.exit(ApplicationImpl.java:631)
-	at com.intellij.openapi.application.impl.ApplicationImpl.restart(ApplicationImpl.java:610)
-	at com.intellij.openapi.application.impl.ApplicationImpl.restart(ApplicationImpl.java:580)
-	at com.intellij.openapi.application.impl.ApplicationImpl.restart(ApplicationImpl.java:568)
-	at com.intellij.ide.InvalidateCacheService.invalidateCachesAndRestart(InvalidateCacheService.java:34)
-	at com.intellij.ide.actions.InvalidateCachesAction.actionPerformed(InvalidateCachesAction.java:15)
-	at com.intellij.openapi.actionSystem.ex.ActionUtil.doPerformActionOrShowPopup(ActionUtil.kt:383)
-	at com.intellij.openapi.actionSystem.ex.ActionUtil.performActionDumbAwareWithCallbacks$lambda$7(ActionUtil.kt:353)
-	at com.intellij.openapi.actionSystem.impl.ActionManagerImpl.performWithActionCallbacks(ActionManagerImpl.kt:1163)
-	at com.intellij.openapi.actionSystem.ex.ActionUtil.performActionDumbAwareWithCallbacks(ActionUtil.kt:352)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem.performAction$lambda$5(ActionMenuItem.kt:273)
-	at com.intellij.openapi.wm.impl.FocusManagerImpl.runOnOwnContext(FocusManagerImpl.java:231)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem.performAction(ActionMenuItem.kt:265)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem._init_$lambda$0(ActionMenuItem.kt:72)
-	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem.fireActionPerformed$lambda$4(ActionMenuItem.kt:103)
-	at com.intellij.openapi.application.TransactionGuardImpl.performActivity(TransactionGuardImpl.java:109)
-	at com.intellij.openapi.application.TransactionGuardImpl.performUserActivity(TransactionGuardImpl.java:98)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem.fireActionPerformed(ActionMenuItem.kt:102)
-	at com.intellij.ui.plaf.beg.BegMenuItemUI.doClick(BegMenuItemUI.java:521)
-	at com.intellij.ui.plaf.beg.BegMenuItemUI$MyMouseInputHandler.mouseReleased(BegMenuItemUI.java:554)
-	at java.desktop/java.awt.Component.processMouseEvent(Unknown Source)
-	at java.desktop/javax.swing.JComponent.processMouseEvent(Unknown Source)
-	at java.desktop/java.awt.Component.processEvent(Unknown Source)
-	at java.desktop/java.awt.Container.processEvent(Unknown Source)
-	at java.desktop/java.awt.Component.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
-	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
-	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Window.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
-	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
-	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
-	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
-	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
-	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
-	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
-	at com.intellij.ide.IdeEventQueue.defaultDispatchEvent(IdeEventQueue.kt:585)
-	at com.intellij.ide.IdeEventQueue.dispatchMouseEvent(IdeEventQueue.kt:530)
-	at com.intellij.ide.IdeEventQueue._dispatchEvent$lambda$16(IdeEventQueue.kt:473)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction$lambda$6(AnyThreadWriteThreadingSupport.kt:274)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWithTemporaryThreadLocal(AnyThreadWriteThreadingSupport.kt:204)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:274)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runPreventiveWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:218)
-	at com.intellij.ide.IdeEventQueue._dispatchEvent(IdeEventQueue.kt:473)
-	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12$lambda$11$lambda$10$lambda$9(IdeEventQueue.kt:307)
-	at com.intellij.openapi.progress.impl.CoreProgressManager.computePrioritized(CoreProgressManager.java:864)
-	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12$lambda$11$lambda$10(IdeEventQueue.kt:306)
-	at com.intellij.ide.IdeEventQueueKt.performActivity$lambda$3(IdeEventQueue.kt:958)
-	at com.intellij.openapi.application.TransactionGuardImpl.performActivity(TransactionGuardImpl.java:117)
-	at com.intellij.ide.IdeEventQueueKt.performActivity(IdeEventQueue.kt:958)
-	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12(IdeEventQueue.kt:301)
-	at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.kt:341)
-	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
-Caused by: com.intellij.openapi.progress.CeProcessCanceledException: kotlinx.coroutines.JobCancellationException: Job was cancelled; job="ProjectImpl@402062164 container":supervisor:ChildScope{Cancelling}@6e901839
-	at com.intellij.openapi.progress.Cancellation.ensureActive(Cancellation.java:61)
-	at com.intellij.openapi.progress.impl.CoreProgressManager.doCheckCanceled(CoreProgressManager.java:165)
-	at com.intellij.openapi.progress.ProgressManager.checkCanceled(ProgressManager.java:336)
-	at com.intellij.openapi.actionSystem.impl.PreCachedDataContext.getDataInner(PreCachedDataContext.kt:216)
-	at com.intellij.openapi.actionSystem.impl.PreCachedDataContext.getData(PreCachedDataContext.kt:181)
-	at com.intellij.openapi.actionSystem.DataContext.getData(DataContext.java:69)
-	at com.intellij.openapi.actionSystem.DataKey.getData(DataKey.kt:32)
-	at com.intellij.openapi.wm.impl.content.SingleContentSupplier$Companion.getSupplierFrom(SingleContentSupplier.kt:112)
-	at com.intellij.openapi.wm.impl.content.SingleContentSupplier$Companion.getSupplierFrom(SingleContentSupplier.kt:109)
-	at com.intellij.openapi.wm.impl.content.SingleContentLayout.getSupplier(SingleContentLayout.kt:84)
-	at com.intellij.openapi.wm.impl.content.SingleContentLayout.tryUpdateContentView(SingleContentLayout.kt:101)
-	at com.intellij.openapi.wm.impl.content.SingleContentLayout.update(SingleContentLayout.kt:72)
-	at com.intellij.openapi.wm.impl.content.ToolWindowContentUi.update(ToolWindowContentUi.java:365)
-	at com.intellij.openapi.wm.impl.content.ToolWindowContentUi$1$1.propertyChange(ToolWindowContentUi.java:122)
-	at java.desktop/java.beans.PropertyChangeSupport.fire(Unknown Source)
-	at java.desktop/java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
-	at java.desktop/java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
-	at com.intellij.ui.content.impl.ContentImpl.setDisplayName(ContentImpl.java:110)
-	at com.intellij.vcs.commit.CommitTabTitleUpdater.setDefaultTitle(CommitTabTitleUpdater.kt:46)
-	at com.intellij.vcs.commit.CommitTabTitleUpdater.start$lambda$2(CommitTabTitleUpdater.kt:33)
-	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:132)
-	... 95 more
-Caused by: kotlinx.coroutines.JobCancellationException: Job was cancelled; job="ProjectImpl@402062164 container":supervisor:ChildScope{Cancelling}@6e901839
-2025-09-26 14:59:07,887 [2024567] SEVERE - #c.i.o.u.ObjectTree - Android Studio Narwhal 3 Feature Drop | 2025.1.3  Build #AI-251.26094.121.2513.14007798
-2025-09-26 14:59:07,887 [2024567] SEVERE - #c.i.o.u.ObjectTree - JDK: 21.0.7; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
-2025-09-26 14:59:07,887 [2024567] SEVERE - #c.i.o.u.ObjectTree - OS: Linux
-2025-09-26 14:59:07,887 [2024567] SEVERE - #c.i.o.u.ObjectTree - Last Action: InvalidateCaches
-2025-09-26 14:59:07,967 [2024647]   WARN - o.j.p.g.i.d.GradleDaemonServices - Unable to send daemon message for Gradle 8.11.1
-2025-09-26 14:59:07,967 [2024647]   WARN - o.j.p.g.i.d.GradleDaemonServices - org.gradle.api.tasks.util.internal.DefaultPatternSetFactory
-2025-09-26 14:59:08,051 [2024731] SEVERE - #c.i.o.u.ObjectTree - PCE must not be thrown from a dispose() implementation
-java.lang.RuntimeException: PCE must not be thrown from a dispose() implementation
-	at com.intellij.openapi.util.ObjectTree.handleExceptions(ObjectTree.java:198)
-	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:143)
-	at com.intellij.openapi.util.ObjectTree.executeAll(ObjectTree.java:164)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:205)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:193)
-	at com.intellij.serviceContainer.ComponentManagerImpl.dispose(ComponentManagerImpl.kt:1174)
-	at com.intellij.openapi.project.impl.ProjectImpl.dispose(ProjectImpl.kt:336)
-	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:132)
-	at com.intellij.openapi.util.ObjectTree.executeAll(ObjectTree.java:164)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:205)
-	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:193)
-	at com.intellij.openapi.project.impl.ProjectManagerImpl.closeProject$lambda$17(ProjectManagerImpl.kt:418)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteAction$lambda$13(AnyThreadWriteThreadingSupport.kt:613)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteAction$lambda$15(AnyThreadWriteThreadingSupport.kt:623)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWithTemporaryThreadLocal(AnyThreadWriteThreadingSupport.kt:204)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteAction(AnyThreadWriteThreadingSupport.kt:623)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteAction(AnyThreadWriteThreadingSupport.kt:613)
-	at com.intellij.openapi.application.impl.ApplicationImpl.runWriteAction(ApplicationImpl.java:988)
-	at com.intellij.openapi.project.impl.ProjectManagerImpl.closeProject(ProjectManagerImpl.kt:398)
-	at com.intellij.openapi.project.impl.ProjectManagerImpl.closeProject$default(ProjectManagerImpl.kt:323)
-	at com.intellij.openapi.project.impl.ProjectManagerImpl.closeAndDisposeAllProjects(ProjectManagerImpl.kt:316)
-	at com.intellij.openapi.application.impl.ApplicationImpl.lambda$destructApplication$6(ApplicationImpl.java:706)
-	at com.intellij.platform.diagnostic.telemetry.helpers.TraceKt.use(trace.kt:28)
-	at com.intellij.openapi.application.impl.ApplicationImpl.destructApplication(ApplicationImpl.java:705)
-	at com.intellij.openapi.application.impl.ApplicationImpl.doExit(ApplicationImpl.java:646)
-	at com.intellij.openapi.application.impl.ApplicationImpl.exit(ApplicationImpl.java:631)
-	at com.intellij.openapi.application.impl.ApplicationImpl.restart(ApplicationImpl.java:610)
-	at com.intellij.openapi.application.impl.ApplicationImpl.restart(ApplicationImpl.java:580)
-	at com.intellij.openapi.application.impl.ApplicationImpl.restart(ApplicationImpl.java:568)
-	at com.intellij.ide.InvalidateCacheService.invalidateCachesAndRestart(InvalidateCacheService.java:34)
-	at com.intellij.ide.actions.InvalidateCachesAction.actionPerformed(InvalidateCachesAction.java:15)
-	at com.intellij.openapi.actionSystem.ex.ActionUtil.doPerformActionOrShowPopup(ActionUtil.kt:383)
-	at com.intellij.openapi.actionSystem.ex.ActionUtil.performActionDumbAwareWithCallbacks$lambda$7(ActionUtil.kt:353)
-	at com.intellij.openapi.actionSystem.impl.ActionManagerImpl.performWithActionCallbacks(ActionManagerImpl.kt:1163)
-	at com.intellij.openapi.actionSystem.ex.ActionUtil.performActionDumbAwareWithCallbacks(ActionUtil.kt:352)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem.performAction$lambda$5(ActionMenuItem.kt:273)
-	at com.intellij.openapi.wm.impl.FocusManagerImpl.runOnOwnContext(FocusManagerImpl.java:231)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem.performAction(ActionMenuItem.kt:265)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem._init_$lambda$0(ActionMenuItem.kt:72)
-	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem.fireActionPerformed$lambda$4(ActionMenuItem.kt:103)
-	at com.intellij.openapi.application.TransactionGuardImpl.performActivity(TransactionGuardImpl.java:109)
-	at com.intellij.openapi.application.TransactionGuardImpl.performUserActivity(TransactionGuardImpl.java:98)
-	at com.intellij.openapi.actionSystem.impl.ActionMenuItem.fireActionPerformed(ActionMenuItem.kt:102)
-	at com.intellij.ui.plaf.beg.BegMenuItemUI.doClick(BegMenuItemUI.java:521)
-	at com.intellij.ui.plaf.beg.BegMenuItemUI$MyMouseInputHandler.mouseReleased(BegMenuItemUI.java:554)
-	at java.desktop/java.awt.Component.processMouseEvent(Unknown Source)
-	at java.desktop/javax.swing.JComponent.processMouseEvent(Unknown Source)
-	at java.desktop/java.awt.Component.processEvent(Unknown Source)
-	at java.desktop/java.awt.Container.processEvent(Unknown Source)
-	at java.desktop/java.awt.Component.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
-	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
-	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Window.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
-	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
-	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
-	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
-	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
-	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
-	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
-	at com.intellij.ide.IdeEventQueue.defaultDispatchEvent(IdeEventQueue.kt:585)
-	at com.intellij.ide.IdeEventQueue.dispatchMouseEvent(IdeEventQueue.kt:530)
-	at com.intellij.ide.IdeEventQueue._dispatchEvent$lambda$16(IdeEventQueue.kt:473)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction$lambda$6(AnyThreadWriteThreadingSupport.kt:274)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWithTemporaryThreadLocal(AnyThreadWriteThreadingSupport.kt:204)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:274)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runPreventiveWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:218)
-	at com.intellij.ide.IdeEventQueue._dispatchEvent(IdeEventQueue.kt:473)
-	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12$lambda$11$lambda$10$lambda$9(IdeEventQueue.kt:307)
-	at com.intellij.openapi.progress.impl.CoreProgressManager.computePrioritized(CoreProgressManager.java:864)
-	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12$lambda$11$lambda$10(IdeEventQueue.kt:306)
-	at com.intellij.ide.IdeEventQueueKt.performActivity$lambda$3(IdeEventQueue.kt:958)
-	at com.intellij.openapi.application.TransactionGuardImpl.performActivity(TransactionGuardImpl.java:117)
-	at com.intellij.ide.IdeEventQueueKt.performActivity(IdeEventQueue.kt:958)
-	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12(IdeEventQueue.kt:301)
-	at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.kt:341)
-	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
-Caused by: com.intellij.openapi.progress.CeProcessCanceledException: kotlinx.coroutines.JobCancellationException: Job was cancelled; job="ProjectImpl@402062164 container":supervisor:ChildScope{Cancelling}@6e901839
-	at com.intellij.openapi.progress.Cancellation.ensureActive(Cancellation.java:61)
-	at com.intellij.openapi.progress.impl.CoreProgressManager.doCheckCanceled(CoreProgressManager.java:165)
-	at com.intellij.openapi.progress.ProgressManager.checkCanceled(ProgressManager.java:336)
-	at com.intellij.serviceContainer.ContainerUtilKt.checkCanceledIfNotInClassInit(containerUtil.kt:14)
-	at com.intellij.serviceContainer.ComponentManagerImpl.getComponent(ComponentManagerImpl.kt:675)
-	at com.intellij.serviceContainer.ComponentManagerImpl.doGetService(ComponentManagerImpl.kt:768)
-	at com.intellij.serviceContainer.ComponentManagerImpl.getService(ComponentManagerImpl.kt:696)
-	at com.intellij.openapi.editor.ClientEditorManager$Companion.getCurrentInstance(ClientEditorManager.kt:27)
-	at com.intellij.openapi.editor.impl.EditorFactoryImpl.releaseEditor(EditorFactoryImpl.kt:246)
-	at com.intellij.execution.impl.ConsoleViewImpl.disposeEditor$lambda$18$lambda$17(ConsoleViewImpl.kt:522)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction$lambda$6(AnyThreadWriteThreadingSupport.kt:274)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWithTemporaryThreadLocal(AnyThreadWriteThreadingSupport.kt:204)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:274)
-	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:222)
-	at com.intellij.openapi.application.impl.ApplicationImpl.runWriteIntentReadAction(ApplicationImpl.java:1009)
-	at com.intellij.execution.impl.ConsoleViewImpl.disposeEditor$lambda$18(ConsoleViewImpl.kt:519)
-	at com.intellij.util.ui.EdtInvocationManager.invokeAndWaitIfNeeded(EdtInvocationManager.java:74)
-	at com.intellij.util.ui.UIUtil.invokeAndWaitIfNeeded(UIUtil.java:2028)
-	at com.intellij.execution.impl.ConsoleViewImpl.disposeEditor(ConsoleViewImpl.kt:518)
-	at com.intellij.execution.impl.ConsoleViewImpl.dispose(ConsoleViewImpl.kt:462)
-	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:132)
-	... 90 more
-Caused by: kotlinx.coroutines.JobCancellationException: Job was cancelled; job="ProjectImpl@402062164 container":supervisor:ChildScope{Cancelling}@6e901839
-2025-09-26 14:59:08,058 [2024738] SEVERE - #c.i.o.u.ObjectTree - Android Studio Narwhal 3 Feature Drop | 2025.1.3  Build #AI-251.26094.121.2513.14007798
-2025-09-26 14:59:08,058 [2024738] SEVERE - #c.i.o.u.ObjectTree - JDK: 21.0.7; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
-2025-09-26 14:59:08,058 [2024738] SEVERE - #c.i.o.u.ObjectTree - OS: Linux
-2025-09-26 14:59:08,058 [2024738] SEVERE - #c.i.o.u.ObjectTree - Last Action: InvalidateCaches
+2025-10-01 19:30:11,006 [3583563]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-10-01 19:30:11,174 [3583731]   WARN - TestScenarioGeneration - Destination folder is not a valid test source folder
+2025-10-01 19:30:11,175 [3583732]   WARN - TestScenarioGeneration - Did not find any test type or no TestScenarioPromptBuilder token is loaded.
+2025-10-02 12:24:06,478 [64419035]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-10-02 12:24:06,552 [64419109]   WARN - TestScenarioGeneration - Destination folder is not a valid test source folder
+2025-10-02 12:24:06,553 [64419110]   WARN - TestScenarioGeneration - Did not find any test type or no TestScenarioPromptBuilder token is loaded.
+2025-10-02 12:24:18,674 [64431231]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-10-02 12:24:27,413 [64439970]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-10-02 12:24:27,818 [64440375]   WARN - TestScenarioGeneration - Destination folder is not a valid test source folder
+2025-10-02 12:24:27,820 [64440377]   WARN - TestScenarioGeneration - Did not find any test type or no TestScenarioPromptBuilder token is loaded.
+2025-10-02 12:26:34,947 [64567504]   WARN - #c.i.o.p.i.j.JdkAuto - Multiple SdkType candidates kotlin.sequences.TransformingSequence@34920c69. Proceeding with a first candidate: JavaSDK
+2025-10-02 12:26:36,832 [64569389]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-10-02 12:26:36,833 [64569390]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-10-02 12:26:36,834 [64569391]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-10-02 12:26:36,835 [64569392]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-10-02 12:26:36,836 [64569393]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-10-02 12:26:36,837 [64569394]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-10-02 12:26:36,838 [64569395]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-10-02 12:26:36,839 [64569396]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-10-02 12:26:36,840 [64569397]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-10-02 12:26:36,841 [64569398]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-10-02 12:26:36,846 [64569403]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-10-02 12:26:36,846 [64569403]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-10-02 12:30:48,802 [64821359]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-10-02 12:30:49,240 [64821797]   WARN - TestScenarioGeneration - Destination folder is not a valid test source folder
+2025-10-02 12:30:49,241 [64821798]   WARN - TestScenarioGeneration - Did not find any test type or no TestScenarioPromptBuilder token is loaded.
+2025-10-02 12:30:55,995 [64828552]   WARN - Emulator: Pixel 4 API 35 - Please update the emulator to one that supports the feature(s): AndroidVirtualizationFramework
+2025-10-02 12:30:56,595 [64829152]   WARN - Emulator: Pixel 4 API 35 - Your GPU drivers may have a bug. Switching to software rendering.
+2025-10-02 12:30:57,263 [64829820]   WARN - Emulator: Pixel 4 API 35 - *** Basic token auth should only be used by android-studio ***
+2025-10-02 12:34:16,434 [65028991]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio

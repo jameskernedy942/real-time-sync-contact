@@ -1,0 +1,1137 @@
+{
+  "title": "Crashlytics - Custom logs",
+  "bundle_identifier": "com.realtime.synccontact",
+  "platform": "android",
+  "display_version": "1.2.1",
+  "build_version": "1",
+  "issue_id": "a478b9b85f509e17f77490d5d93429cc",
+  "session_id": "68DA067A02320001476A22FF04A673E1_DNE_8_v2",
+  "event_timestamp": "Mon Sep 29 2025 11:42:41 GMT+0700 (Western Indonesia Time)",
+  "logs_and_breadcrumbs": [
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    },
+    {
+      "timestamp": "Mon Sep 29 2025 11:09:31 GMT+0700 (Western Indonesia Time)",
+      "message": "CRITICAL_ERROR: Component: UncaughtException - Error: Thread: main - Unable to start service com.realtime.synccontact.services.MainSyncService@91491d with null: android.app.ForegroundServiceStartNotAllowedException: Time limit already exhausted for foreground service type dataSync",
+      "source": "crashlytics"
+    }
+  ]
+}

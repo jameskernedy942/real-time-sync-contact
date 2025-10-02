@@ -1,6 +1,7 @@
 package com.realtime.synccontact.amqp
 
 import com.rabbitmq.client.*
+import com.realtime.synccontact.connection.GlobalConnectionRegistry
 import com.realtime.synccontact.network.ConnectionManager
 import com.realtime.synccontact.network.NetworkErrorHandler
 import com.realtime.synccontact.utils.CrashlyticsLogger
@@ -31,6 +32,8 @@ class ThreadSafeAMQPConnection(
     private val isConnected = AtomicBoolean(false)
     private val reconnectAttempts = AtomicInteger(0)
     private var consumerTag: String? = null
+    private val isConsumerActive = AtomicBoolean(false)
+    private val isReconnecting = AtomicBoolean(false)
 
     // Use a dedicated single-thread executor for RabbitMQ operations
     // This prevents deadlocks by ensuring all RabbitMQ operations happen on the same thread
@@ -80,6 +83,16 @@ class ThreadSafeAMQPConnection(
     }
 
     suspend fun connect(messageHandler: suspend (String) -> Boolean): Boolean {
+        // Check global registry first
+        if (!GlobalConnectionRegistry.tryRegisterConnection(queueName)) {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.WARNING,
+                "AMQPConnection",
+                "Connection rejected by GlobalRegistry for $queueName"
+            )
+            return false
+        }
+
         _connectionState.value = ConnectionState.CONNECTING
 
         return withContext(rabbitMQDispatcher) {
@@ -92,6 +105,7 @@ class ThreadSafeAMQPConnection(
                         "Network not suitable for connection to $queueName"
                     )
                     _connectionState.value = ConnectionState.ERROR
+                    GlobalConnectionRegistry.unregisterConnection(queueName)
                     scheduleReconnect()
                     return@withContext false
                 }
@@ -123,6 +137,7 @@ class ThreadSafeAMQPConnection(
                 true
 
             } catch (e: Exception) {
+                GlobalConnectionRegistry.unregisterConnection(queueName)
                 handleConnectionError(e)
                 false
             }
@@ -205,6 +220,32 @@ class ThreadSafeAMQPConnection(
     }
 
     private fun setupConsumer(channel: Channel) {
+        // Check if consumer is already active
+        if (isConsumerActive.getAndSet(true)) {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.WARNING,
+                "AMQPConnection",
+                "Consumer already active for $queueName, skipping duplicate setup"
+            )
+            return
+        }
+
+        // Cancel any existing consumer first
+        consumerTag?.let { tag ->
+            try {
+                if (channel.isOpen) {
+                    channel.basicCancel(tag)
+                    CrashlyticsLogger.log(
+                        CrashlyticsLogger.LogLevel.INFO,
+                        "AMQPConnection",
+                        "Cancelled existing consumer $tag before creating new one"
+                    )
+                }
+            } catch (e: Exception) {
+                // Ignore cancellation errors
+            }
+        }
+
         val consumer = object : DefaultConsumer(channel) {
             override fun handleDelivery(
                 consumerTag: String,
@@ -230,13 +271,37 @@ class ThreadSafeAMQPConnection(
             override fun handleCancel(consumerTag: String) {
                 CrashlyticsLogger.logConnectionEvent("CANCELLED", queueName)
                 isConnected.set(false)
+                isConsumerActive.set(false)
                 _connectionState.value = ConnectionState.DISCONNECTED
                 scheduleReconnect()
             }
         }
 
         consumerTag = "device_${phoneNumber}_${System.currentTimeMillis()}"
-        channel.basicConsume(queueName, false, consumerTag, consumer)
+        try {
+            // Check queue consumers before creating new one
+            val declareOk = channel.queueDeclarePassive(queueName)
+            val consumerCount = declareOk.consumerCount
+
+            if (consumerCount > 0) {
+                CrashlyticsLogger.log(
+                    CrashlyticsLogger.LogLevel.WARNING,
+                    "AMQPConnection",
+                    "Queue $queueName already has $consumerCount consumers, proceeding with new consumer"
+                )
+            }
+
+            channel.basicConsume(queueName, false, consumerTag, consumer)
+
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.INFO,
+                "AMQPConnection",
+                "Consumer $consumerTag created successfully for $queueName"
+            )
+        } catch (e: Exception) {
+            isConsumerActive.set(false)
+            throw e
+        }
     }
 
     private fun startMessageProcessor(messageHandler: suspend (String) -> Boolean) {
@@ -364,9 +429,24 @@ class ThreadSafeAMQPConnection(
         )
 
         isConnected.set(false)
+        isConsumerActive.set(false)
         _connectionState.value = ConnectionState.DISCONNECTED
 
-        if (!isHardError || consecutiveFailures.get() < MAX_CONSECUTIVE_FAILURES) {
+        // Check if this is a clean shutdown (200 OK) which indicates duplicate consumer
+        if (!isHardError && message.contains("200") && message.contains("OK")) {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.WARNING,
+                "AMQPConnection",
+                "Clean shutdown detected for $queueName - possible duplicate consumer, not reconnecting immediately"
+            )
+            // Wait longer before reconnecting to avoid rapid reconnection loop
+            connectionScope.launch {
+                delay(30000) // Wait 30 seconds
+                if (!isConnected.get() && consecutiveFailures.get() < MAX_CONSECUTIVE_FAILURES) {
+                    scheduleReconnect()
+                }
+            }
+        } else if (!isHardError || consecutiveFailures.get() < MAX_CONSECUTIVE_FAILURES) {
             scheduleReconnect()
         }
     }
@@ -390,20 +470,34 @@ class ThreadSafeAMQPConnection(
     }
 
     private fun scheduleReconnect() {
+        // Prevent multiple reconnection attempts
+        if (!isReconnecting.compareAndSet(false, true)) {
+            CrashlyticsLogger.log(
+                CrashlyticsLogger.LogLevel.DEBUG,
+                "AMQPConnection",
+                "Reconnection already in progress for $queueName, skipping duplicate"
+            )
+            return
+        }
+
         _connectionState.value = ConnectionState.RECONNECTING
         connectionScope.launch {
-            val attempts = reconnectAttempts.incrementAndGet()
-            val delay = NetworkErrorHandler.calculateBackoffDelay(5000L, attempts)
+            try {
+                val attempts = reconnectAttempts.incrementAndGet()
+                val backoffDelay = NetworkErrorHandler.calculateBackoffDelay(5000L, attempts)
 
-            CrashlyticsLogger.logRetryAttempt(
-                "AMQPConnection-$queueName",
-                attempts,
-                MAX_CONSECUTIVE_FAILURES
-            )
+                CrashlyticsLogger.logRetryAttempt(
+                    "AMQPConnection-$queueName",
+                    attempts,
+                    MAX_CONSECUTIVE_FAILURES
+                )
 
-            delay(delay)
-            disconnect()
-            CrashlyticsLogger.logConnectionEvent("RECONNECT_SCHEDULED", queueName)
+                delay(backoffDelay)
+                disconnect()
+                CrashlyticsLogger.logConnectionEvent("RECONNECT_SCHEDULED", queueName)
+            } finally {
+                isReconnecting.set(false)
+            }
         }
     }
 
@@ -416,7 +510,11 @@ class ThreadSafeAMQPConnection(
     fun disconnect() {
         try {
             isConnected.set(false)
+            isConsumerActive.set(false)
             _connectionState.value = ConnectionState.DISCONNECTED
+
+            // Unregister from global registry
+            GlobalConnectionRegistry.unregisterConnection(queueName)
 
             // Close channels first
             messageChannel.close()
@@ -452,6 +550,9 @@ class ThreadSafeAMQPConnection(
 
     fun cleanup() {
         synchronized(this) {
+            // Unregister from global registry
+            GlobalConnectionRegistry.unregisterConnection(queueName)
+
             // Cancel all coroutines
             connectionScope.cancel()
 
